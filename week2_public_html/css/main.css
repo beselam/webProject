@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
+body {
+    background: #FAFAFA;
+    height: 100%;
+}
+
+header {
+    background: #FAFAFA;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 5;
+
+}
+
+a {
+    width: 25%;
+    display: inline-block;
+    margin-left: -3px;
+    text-align: center;
+    padding: 12px;
+    z-index: 5;
+}
+
+.fas {
+    color: goldenrod !important;
+    font-size: 25px;
+}
+
+.far {
+    color: goldenrod !important;
+    font-size: 25px;
+}
+.fal {
+    color: goldenrod !important;
+    font-size: 25px;
+}
+
+.main_container{
+    background: #FAFAFA;
+    width: 100%;
+    padding-top: 50px;
+    margin-top: 50px;
+    height: 100%;
+}
+.card_holder{
+    margin-bottom: 4%
+}
+.card{
+    background: #fff;
+    height: 72%;
+    width: 45%;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding-bottom: 1%;
+
+}
+.card_header{
+    padding: 15px;
+    background: white;
+    position: relative;
+}
+.profile_image{
+    background: hotpink;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-block;
+
+}
+.user_name{
+    display: inline-block;
+    position: relative;
+    bottom: 10px;
+    padding-left: 7px;
+}
+.time{
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    top: 29px;
+}
+.content img {
+    width: 100%;
+}
+
+.discription{
+    padding: 5px 10px;
+}
+.comment{
+width: 100%;
+padding-left: 1%;
+}
+.comment_input{
+    width: 75%;
+    display: inline-block;
+
+}
+.comment_number{
+display: inline-block;
+width: 20%;
+padding-left: 4%;
+}
+.comment_input  input{
+    height: 25px;
+    width: 100%;
+    border: 1px;
+    background: whitesmoke;
+    border-radius: 20px;
+    padding-left: 10px;
+}
