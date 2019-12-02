@@ -5,6 +5,7 @@
 }
 html{
     height: 100%;
+    background: lawngreen;
 }
 body {
     background: #FAFAFA;
@@ -19,6 +20,14 @@ header {
     top: 0;
     z-index: 5;
 
+}
+.main_container{
+    height: 100%;
+}
+.main_container:after{
+    content: "";
+    display: table;
+    clear: both;
 }
 
 a {
@@ -44,9 +53,9 @@ a {
     font-size: 25px;
 }
 
-.main_container{
+.right{
     background: #FAFAFA;
-    width: 100%;
+    width: 60%;
     padding-top: 50px;
     margin-top: 50px;
     height: 100%;
@@ -54,11 +63,55 @@ a {
 .card_holder{
     margin-bottom: 4%
 }
+.column{
+    float: left;
+}
+.left{
+    width: 40%;
+    height: 100%;
+    padding-top:50px ;
+}
+.left_child{
+    height: 70%;
+    position: fixed;
+    width: 35%;
+}
+.post_form{
+    height: 100%;
+    padding-top: 11%;
+    padding-left:4% ;
+}
+.create_post_image{
+    width: 30%;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    border-radius: 8px;
+}
+.create_post_image_div{
+    width: 100%;
+    text-align: center;
+    background: #FAFAFA;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 3%;
+    
+}
+
+.light-border {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 1em;
+    box-sizing: border-box;
+    display: table;
+    width: 100%;
+    text-align: center;
+}
 .card{
     background: #fff;
     height: 72%;
     width: 45%;
-    margin: auto;
+    margin: inherit;
+    margin-left: 15%;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding-bottom: 1%;
@@ -77,6 +130,7 @@ a {
     display: inline-block;
 
 }
+
 .user_name{
     display: inline-block;
     position: relative;

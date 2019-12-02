@@ -9,12 +9,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.3.0",
     "jquery-serializejson": "^2.9.0",
     "multer": "^1.4.2",
-    "mysql2": "^2.0.1"
+    "mysql2": "^2.0.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {}
 }
