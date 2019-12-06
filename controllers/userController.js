@@ -1,36 +1,43 @@
 'use strict';
-const userModel = require('../models/userModel');
 const bcrypt = require('bcryptjs');
+const userModel = require('../models/userModel');
+const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+require('dotenv').config();
 
 
-const user_login = async (req,email,passwd,done) => {
-  const params=[
-    email
-  ]
-  console.log('from controller'+ params);
+const login = (req, res) => {
+  // TODO: add passport authenticate
+  console.log(req.body);
   
-  const response = await userModel.login_user(req,done,params);
-  console.log(response);
-  
-  return response;
-  //const result =  await response
-  //console.log(result_password);
-  
- // return done(null,'kkkkk');
-  //res.send("With this endpoint you can add users.");
-  //const user = await userModel.getUser([response.insertId]);
-  // await res.json(user);
+  passport.authenticate('local', {session: false}, (err, user, info) => {
+  //  console.log('controller ' , user);
+    
 
+    if (err || !user) {
+     const message= err.message;
+      console.log('login error', err, user);
+      return res.status(400).json({
+        message,
+        user: user,
+      });
+    }
+    req.login(user, {session: false}, (err) => {
+      if (err) {
+        res.send(err);
+      }
+      // generate a signed son web token with the contents of user object and return it in the response
+      const token = jwt.sign(user, process.env.TOKEN_SECRET);
+      return res.json({user, token});
+    });
+  })(req, res); 
+  
 };
 
 const user_register = async (req, res) => {
  
   bcrypt.genSalt(10, async (err, salt) =>{
     bcrypt.hash(req.body.passwd, salt, async (err, hash)=> {
-      // Store hash in your password DB.
-
    const   params = [
         req.body.name,
         req.body.email,
@@ -38,24 +45,26 @@ const user_register = async (req, res) => {
       ];
        console.log(params);
        const response = await userModel.addUser(params);
+       const user = await response;
+       console.log('the user is ', user);
+       
+       res.json(user);
 
     });
 
   });
 
   
-   
-  
-  //res.render('main',{title:'register'}); 
-  //const user = await userModel.getUser([response.insertId]);
-  // await res.json(user);
 };
 
+const get_all_feeds = async (req,res)=>{
+  
+}
 
 
 module.exports = {
-  user_login,
-  user_register
+  user_register,
+  login
 
 
 };

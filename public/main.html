@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,76 +11,162 @@
 </head>
 
 <body>
-    <header>
-        <a href="home.html"><i class="fas fa-home"></i></a>
+    <header class="header_wrapper" id="header_wrapper">
+        <a href=""> <img class="logo" src="pic/log.PNG" alt=""></a>
         <a href="search.html"><i class="fas fa-search"></i></a>
-        <a href="profile.html"><i class="far fa-user"></i> </a>
-        <a href="profile.html"><i class="far fa-plus-square"></i></a>
+        <input class="search" type="text">
 
     </header>
-
     <div class="main_container">
-        <div class="left column">
-            <div class="left_child">
-                <div class="post_form">
-                    <div class="create_post_image_div">
-                        <img class="create_post_image" src="pic/create.PNG" alt="">
-
-                    </div>
-                    <form action="http://localhost:3000/cat" method="post" class="light-border"
-                        enctype="multipart/form-data" id="addPost">
-                        <select class="light-border add-owner" name="owner" required>
-                            <option value="">Item type</option>
-                        </select>
-                        <input class="light-border" type="text" name="name" placeholder="Discription ... " required>
-
-                        <input class="light-border" type="file" name="cat" placeholder="Choose file">
-
-                        <button class="light-border" type="submit">Post</button>
-                        <input type="hidden" name="id">
-                    </form>
-                </div>
-
-            </div>
-
+        <div class="login_wrapper" id="login_wrapper">
+            <div class="login_header" id="login_header">long in </div>
+            <form method="POST" class="light-border" id="userLoginForm">
+                <input class="light-border" type="email" name="email" placeholder="email" required>
+                <input class="light-border" type="password" name="passwd" placeholder="Password" required>
+                <button class="light-border" type="submit">Login</button>
+            </form>
+            <button class="noAccount_bt" id="mm">No Account ?</button>
         </div>
-        <div class="right column">
 
-
-            <div class="card_holder">
-                <div class="card">
-                    <div class="card_header">
-                        <div class="profile_image"></div>
-                        <div class="user_name">beselam</div>
-                        <div class="time">
-                            <p>1hr</p>
-                        </div>
+        <div class="register_wrapper" id="register_wrapper">
+            <button class="register_header"> <b> Register to Offer app</b> </button>
+            <div id="error_div"></div>
+            <form class="light-border" id="userRegisterForm">
+                <input class="light-border" type="text" name="name" placeholder="Name" required>
+                <input class="light-border" type="email" name="email" placeholder="email" required>
+                <input class="light-border" type="password" name="passwd" placeholder="Password" required>
+                <input class="light-border" type="password" name="matchPasswd" placeholder="Re-enter Password" required>
+                <button class="light-border" type="submit">Register</button>
+            </form>
+            <div class="register_footer" id="register_footer">
+                <button class="reg_back_bt" id="reg_back_bt">Back</button> <button class="reg_later_bt"
+                    id="reg_later_bt">Register Later</button></div>
+        </div>
+        <div class="feed_wrapper" id="feed_wrapper">
+            <div class="left column">
+                <div class="left_child">
+                    <div class="login_left_div">
+                        <button class="left_login" id="left_login">Login</button>
+                        <button class="left_register" id="left_register"> Register</button>
                     </div>
-                    <div class="content">
-                        <img src="pic/car2.png" alt="">
+                    <div class="post_form">
+                        <div class="create_post_image_div">
+                            <img class="create_post_image" src="pic/create.PNG" alt="">
 
-                        <div class="discription">
-                            <span> USER NAME </span> this is the discription part
-                            this is the discription part <br>
-                            this is the discription part
                         </div>
+                        <form  class="light-border"  enctype="multipart/form-data" id="addPost">
+                            <select class="light-border add-list" name="catagoryId" required>
+                                <option value="">Item type</option>
+                            </select>
+                            <input class="light-border" type="text" name="description" placeholder="Discription ... " required>
+                            <input class="light-border"
+                            type="file"
+                            name="image"
+                            accept="image/*"
+                            placeholder="Choose file">
 
-                    </div>
-                    <div class="comment">
-
-                        <form action="http://localhost:4000/login" method="POST" class="comment_input">
-                            <input type="text" name="name" placeholder="wite a comment">
-
+                            <button class="light-border" type="submit">Post</button>
+                            <input  name="userId" value="5" id="userId">
                         </form>
-                        <div class="comment_number">23 comment </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="right column">
+
+
+                <div class="card_holder">
+                    <div class="card">
+                        <div class="card_header">
+                            <div class="profile_image"></div>
+                            <div class="user_name">beselam</div>
+                            <div class="time">
+                                <p>1hr</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <img src="pic/car2.png" alt="">
+
+                            <div class="discription">
+                                <span> USER NAME </span> this is the discription part
+                                this is the discription part <br>
+                                this is the discription part
+                            </div>
+
+                        </div>
+                        <div class="comment">
+
+                            <form action="http://localhost:4000/login" method="POST" class="comment_input">
+                                <input type="text" name="name" placeholder="wite a comment">
+
+                            </form>
+                            <div class="comment_number">23 comment </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card_header">
+                            <div class="profile_image"></div>
+                            <div class="user_name">beselam</div>
+                            <div class="time">
+                                <p>1hr</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <img src="pic/car2.png" alt="">
+
+                            <div class="discription">
+                                <span> USER NAME </span> this is the discription part
+                                this is the discription part <br>
+                                this is the discription part
+                            </div>
+
+                        </div>
+                        <div class="comment">
+
+                            <form action="http://localhost:4000/login" method="POST" class="comment_input">
+                                <input type="text" name="name" placeholder="wite a comment">
+
+                            </form>
+                            <div class="comment_number">23 comment </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card_header">
+                            <div class="profile_image"></div>
+                            <div class="user_name">beselam</div>
+                            <div class="time">
+                                <p>1hr</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <img src="pic/car2.png" alt="">
+
+                            <div class="discription">
+                                <span> USER NAME </span> this is the discription part
+                                this is the discription part <br>
+                                this is the discription part
+                            </div>
+
+                        </div>
+                        <div class="comment">
+
+                            <form action="http://localhost:4000/login" method="POST" class="comment_input">
+                                <input type="text" name="name" placeholder="wite a comment">
+
+                            </form>
+                            <div class="comment_number">23 comment </div>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
-
-
         </div>
     </div>
 
+    <script src="js/main.js"></script>
+    <script src="./js/serialize.js"></script>
 </body>
 
 </html>
