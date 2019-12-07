@@ -14,10 +14,10 @@ const loginHeader = document.querySelector('#login_header');
 const regBackBut = document.querySelector('#reg_back_bt');
 const regLaterBut = document.querySelector('#reg_later_bt');
 //const createPost = document.querySelector('#addPost');
-const createPost = document.getElementById('addPost')
+const createPost = document.getElementById('addPost');
 const noAccount = document.getElementById('mm');
 const itemLists = document.querySelectorAll('.add-list');
-const userrId = document.querySelectorAll('.userId');
+const userInputId = document.getElementById('userId');
 
 
 
@@ -46,7 +46,8 @@ userLoginForm.addEventListener('submit', async (evt) => {
   } else {
     // save token
     localStorage.setItem('token', json.token);
-    userrId.value='1';
+
+    userInputId.value=json.user.user_id;
     displayFeedFiled();
 
   }
