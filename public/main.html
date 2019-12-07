@@ -6,15 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <title>Document</title>
 </head>
 
 <body>
     <header class="header_wrapper" id="header_wrapper">
-        <a href=""> <img class="logo" src="pic/log.PNG" alt=""></a>
-        <a href="search.html"><i class="fas fa-search"></i></a>
-        <input class="search" type="text">
+        <a href=""> <img class="logo" src="pic/logg.PNG" alt=""></a>
+     <form  class="search_form" >
+            <input class="search_input" type="text" placeholder="Search.." name="search">
+            <button class="search_but" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <button class="header_login" >Login</button>
+    <button class="header_register" > Register</button>
 
     </header>
     <div class="main_container">
@@ -45,11 +50,8 @@
         <div class="feed_wrapper" id="feed_wrapper">
             <div class="left column">
                 <div class="left_child">
-                    <div class="login_left_div">
-                        <button class="left_login" id="left_login">Login</button>
-                        <button class="left_register" id="left_register"> Register</button>
-                    </div>
-                    <div class="post_form">
+                    
+            <div class="post_form">
                         <div class="create_post_image_div">
                             <img class="create_post_image" src="pic/create.PNG" alt="">
 
@@ -77,7 +79,8 @@
 
 
                 <div class="card_holder">
-                    <div class="card">
+                  
+                    <div class="card w3-card-2">
                         <div class="card_header">
                             <div class="profile_image"></div>
                             <div class="user_name">beselam</div>
@@ -101,61 +104,7 @@
                                 <input type="text" name="name" placeholder="wite a comment">
 
                             </form>
-                            <div class="comment_number">23 comment </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card_header">
-                            <div class="profile_image"></div>
-                            <div class="user_name">beselam</div>
-                            <div class="time">
-                                <p>1hr</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <img src="pic/car2.png" alt="">
-
-                            <div class="discription">
-                                <span> USER NAME </span> this is the discription part
-                                this is the discription part <br>
-                                this is the discription part
-                            </div>
-
-                        </div>
-                        <div class="comment">
-
-                            <form action="http://localhost:4000/login" method="POST" class="comment_input">
-                                <input type="text" name="name" placeholder="wite a comment">
-
-                            </form>
-                            <div class="comment_number">23 comment </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card_header">
-                            <div class="profile_image"></div>
-                            <div class="user_name">beselam</div>
-                            <div class="time">
-                                <p>1hr</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <img src="pic/car2.png" alt="">
-
-                            <div class="discription">
-                                <span> USER NAME </span> this is the discription part
-                                this is the discription part <br>
-                                this is the discription part
-                            </div>
-
-                        </div>
-                        <div class="comment">
-
-                            <form action="http://localhost:4000/login" method="POST" class="comment_input">
-                                <input type="text" name="name" placeholder="wite a comment">
-
-                            </form>
-                            <div class="comment_number">23 comment </div>
+                            <div class="comment_number">23..comment </div>
                         </div>
                     </div>
                 </div>

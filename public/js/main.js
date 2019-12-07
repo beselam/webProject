@@ -2,13 +2,13 @@
 const url = 'http://localhost:4000';
 const userLoginForm = document.querySelector('#userLoginForm');
 const userRegisterForm = document.querySelector('#userRegisterForm');
-const headerWrapper = document.querySelector('#header_wrapper');
+const headerWrapper = document.querySelector('header');
 const feedWrapper = document.querySelector('#feed_wrapper');
 const loginWrapper = document.querySelector('#login_wrapper');
 const error_div = document.querySelector('#error_div');
 const registerwrapper = document.querySelector('#register_wrapper');
-const loginFeedBut = document.querySelector('#left_login');
-const regFeedBut = document.querySelector('#left_register');
+const loginFeedBut = document.querySelector('.header_login');
+const regFeedBut = document.querySelector('.header_register');
 const loginHeader = document.querySelector('#login_header');
 const regBackBut = document.querySelector('#reg_back_bt');
 const regLaterBut = document.querySelector('#reg_later_bt');
@@ -67,7 +67,7 @@ loginFeedBut.addEventListener('click', (event) => {
   loginWrapper.style.display = 'inherit';
   registerwrapper.style.display = 'none';
   feedWrapper.style.display = 'none';
-  headerWrapper.style.display = 'none';
+  headerWrapper.style.display = 'none !important';
 
 });
 
@@ -77,7 +77,7 @@ regFeedBut.addEventListener('click', (event) => {
   loginWrapper.style.display = 'none';
   registerwrapper.style.display = 'inherit';
   feedWrapper.style.display = 'none';
-  headerWrapper.style.display = 'none';
+  headerWrapper.style.display = 'none  !important';
 
 });
 
