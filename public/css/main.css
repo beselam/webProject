@@ -7,7 +7,7 @@
 }
 html{
     height: 100%;
-    background: lawngreen;
+
 }
 body {
     background: #FAFAFA;
@@ -256,7 +256,20 @@ a {
 
 .logo{
     width: 80px;
+    animation: move 1s infinite alternate;
 }
+
+@keyframes move {
+    from{
+        transform : translateX(0px)
+    }
+
+    to {
+        transform: translateX(50px);
+    }
+    
+}
+
 
 .fas {
     color: #FAFAFA!important;
@@ -378,7 +391,7 @@ border-radius: 7px;
     right: 15px;
     top: 29px;
 }
-.content img {
+.content .postPic {
     width: 100%;
 }
 

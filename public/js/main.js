@@ -4,6 +4,7 @@ const userLoginForm = document.querySelector('#userLoginForm');
 const userRegisterForm = document.querySelector('#userRegisterForm');
 const headerWrapper = document.querySelector('header');
 const feedWrapper = document.querySelector('#feed_wrapper');
+const cardHolder = document.querySelector('.card_holder');
 const loginWrapper = document.querySelector('#login_wrapper');
 const error_div = document.querySelector('#error_div');
 const registerwrapper = document.querySelector('#register_wrapper');
@@ -50,8 +51,6 @@ userLoginForm.addEventListener('submit', async (evt) => {
 
   }
 });
-
-
 
 noAccount.addEventListener('click', (event) => {
   console.log('clicked');
@@ -192,7 +191,9 @@ createPost.addEventListener('submit', async (evt) => {
 
  const json = await response.json();
   console.log('add response', json);
-/*     getItems(); */
+   
+    getAllPost();
+     getItems();
 });
 
 const createItemOptions = (items) => {
@@ -224,13 +225,98 @@ const getItems = async () => {
 const getAllPost = async () => {
   try {
     const response = await fetch(url + '/post/getAllPost');
-    const items = await response.json();
+    const posts = await response.json();
+    console.log(posts);
+    
+    createCards(posts);
+    
 
   }
   catch (e) {
     console.log(e.message);
   }
 };
+
+
+const createCards=(posts)=>{
+  posts.forEach((post) =>{
+    console.log(post.ownername);
+    
+     const card = document.createElement('div')
+     card.className='card w3-card-2';
+    
+     const cardHeader = document.createElement('div')
+     cardHeader.className='card_header';
+    
+     const profileImage = document.createElement('div')
+     profileImage.className='profile_image';
+    
+     const userName = document.createElement('div')
+     userName.innerHTML=post.ownername
+     userName.className='user_name';
+
+     const postTime = document.createElement('div')
+     postTime.className='time';
+     postTime.innerHTML='1hr';
+     
+    /* cardHeader.appendChild(profileImage);
+     cardHeader.appendChild(userName);
+     cardHeader.appendChild(postTime);
+     card.appendChild(cardHeader); */
+
+     const cardBody = document.createElement('div')
+     cardBody.className='content';
+     
+     const postPic = document.createElement('img')
+     postPic.src=url+'/'+post.file_path;
+     postPic.className='postPic';
+
+     const discription = document.createElement('div')
+     discription.innerHTML=post.description;
+     discription.className='discription';
+
+     /*cardBody.appendChild(postPic);
+     cardBody.appendChild(discription);
+     card.appendChild(cardBody); */
+
+     
+     const commentSection = document.createElement('div')
+     commentSection.className='comment';
+
+     const commentForm = document.createElement('form')
+     commentForm.className='comment_input';
+
+     const commentInput = document.createElement('input')
+     commentInput.className='c_input';
+     commentInput.placeholder='wite a comment';
+
+     const commentNumber = document.createElement('div')
+     commentNumber.className='comment_number';
+     commentNumber.innerHTML='23..comment';
+
+     cardHeader.appendChild(profileImage);
+     cardHeader.appendChild(userName);
+     cardHeader.appendChild(postTime);
+     card.appendChild(cardHeader); 
+
+
+     cardBody.appendChild(postPic);
+     cardBody.appendChild(discription);
+     card.appendChild(cardBody);
+
+
+     commentForm.appendChild(commentInput);
+     commentSection.appendChild(commentForm);
+     commentSection.appendChild(commentNumber);
+     card.appendChild(commentSection);
+
+     cardHolder.appendChild(card)
+
+  
+  });
+
+}
+getAllPost();
 getItems();
 
 
