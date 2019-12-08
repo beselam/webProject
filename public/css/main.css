@@ -10,6 +10,7 @@ html{
 
 }
 body {
+
     background: #FAFAFA;
     height: 100%;
     font-family: 'Montserrat' , sans-serif;
@@ -35,22 +36,28 @@ header{
 
 .register_wrapper {
     display: none; 
-    padding-top: 6%;
-    margin-top: 50px;
+    padding-top: 2%;
+    background: #0087cd !important;
+    margin-top: 9% !important;
     max-width: 40em;
     margin: auto;
+    border: 10px solid cornflowerblue;
+    border-radius: 8px;
 }
 
 
 
 
 .login_wrapper {
-    padding-top: 9%;
-    margin-top: 50px;
+    display: none; 
+    padding-top: 2%;
+    padding-bottom: 2%; 
+    background: #0087cd !important;
+    margin-top: 9% !important;
     max-width: 40em;
     margin: auto;
-
-    display: none; 
+    border: 10px solid cornflowerblue;
+    border-radius: 8px;
 }
 
 
@@ -62,17 +69,18 @@ header{
 
 
 .login_wrapper .noAccount_bt{
-    border: 1px solid lightsteelblue;
+    border: 2px solid white;
     border-radius: 11px;
-    background: gainsboro;
+    background:#0087cd ;
     width: 32%;
     height: 35px;
+    color: white;
     margin-left: 34%;
     margin-top: 6%;
 }
 .login_wrapper .login_header{
     border: 1px solid;
-    padding: 5% 1%;
+    padding: 2% 1%;
     background: white;
     border-radius: 6px;
     margin-bottom: 7%;
@@ -92,40 +100,41 @@ header{
 
 
 .register_wrapper .register_footer{
-margin-top: 7%;
-display: flex;
-padding: 2% 8%;
-border: 1px solid gainsboro;
-background-color: #ccc;
-border-radius: 10px;
+    margin-top: 1%;
+    display: flex;
+    padding: 1% 6%;
+    padding-bottom:3%;
+/*border: 1px solid gainsboro;
+background-color: #ccc; 
+border-radius: 10px;*/
 }
 
 .register_wrapper .reg_back_bt{
-    border: 1px solid lightsteelblue;
+    border: 1.5px solid white;
+
     border-radius: 8px;
-    background: gainsboro;
+    background: #0087cd;
     height: 35px;
-    width: 20%;
-    color: darkolivegreen;
+    width: 35%;
+    color: white;
   
 
 }
 .register_wrapper .reg_later_bt{
-    border: 1px solid lightsteelblue;
+    border: 1.5px solid white;
     border-radius: 8px;
-    background: gainsboro;
+    background: #0087cd;
     height: 35px;
-    width: 20%;
-    margin-left: 61%;
-    color: darkolivegreen;
-    
+    width: 35%;
+    margin-left: 54%;
+    color: white;
 
     
 }
 .register_wrapper .register_header{
-    padding: 3%;
     margin-bottom: 5%;
-    color: darkslategrey;
+    color: white;
+    background: #0087cd;
     border: 1px;
     border-radius: 5px;
     font-size: large;
@@ -196,12 +205,14 @@ border-radius: 10px;
     
 }
 .register_wrapper .error_box{
-color: red;
-border: 1px solid red;
-padding: .7em 1em;
-background: #e4272714;
-width: 94%;
+    color: #f20052;
+    border: 1px solid red;
+    padding: 0.7em 2em;
+    z-index: 6;
+    background: #e427275c;
+    width: 100%;
 }
+
 
 .search_but{
     width: 8%;
@@ -280,19 +291,24 @@ a {
 
 .right{
     background: #FAFAFA;
-    width: 60%;
+    width: 65%;
     padding-top: 50px;
     margin-top: 50px;
     height: 100%;
 }
 .card_holder{
-    margin-bottom: 4%
+    margin-bottom: 4%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+    grid-gap: 15px;
+     
 }
 .column{
     float: left;
 }
 .left{
-    width: 40%;
+    width: 32%;
     height: 100%;
     padding-top:50px ;
 }
@@ -310,6 +326,15 @@ border-radius: 7px;
     height: 35px;
    
 }
+.header_logout{
+    border-radius: 7px;
+    background:#0087cd ;
+    color: white;
+        width: 10%;
+        border: 1px solid white;
+        height: 35px;
+       
+    }
 .header_register{
     border-radius: 7px;
     width: 10%;
@@ -321,7 +346,7 @@ border-radius: 7px;
 .left_child{
     height: 70%;
     position: fixed;
-    width: 35%;
+    width: 29%;
 }
 .post_form{
     height: 100%;
@@ -354,14 +379,23 @@ border-radius: 7px;
     text-align: center;
 }
 .card{
-    background: #fff;
+  /*  background: #fff;
     height: 72%;
     width: 45%;
     margin: inherit;
     margin-left: 15%;
     border: 8px solid #ffffff8a;
     border-radius: 8px;
-    padding-bottom: 1%;
+    padding-bottom: 1%; */
+
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    margin: inherit;
+    margin-left: 0%;
+    border: 8px solid #ffffff8a;
+    border-radius: 8px;
+    padding-bottom: 0%;
 
 }
 .card_header{

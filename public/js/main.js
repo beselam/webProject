@@ -9,6 +9,7 @@ const loginWrapper = document.querySelector('#login_wrapper');
 const error_div = document.querySelector('#error_div');
 const registerwrapper = document.querySelector('#register_wrapper');
 const loginFeedBut = document.querySelector('.header_login');
+const logoutBut = document.querySelector('.header_logout');
 const regFeedBut = document.querySelector('.header_register');
 const loginHeader = document.querySelector('#login_header');
 const regBackBut = document.querySelector('#reg_back_bt');
@@ -20,7 +21,59 @@ const itemLists = document.querySelectorAll('.add-list');
 const userInputId = document.getElementById('userId');
 
 
+const displayLoginFiled = () => {
+  loginWrapper.style.display = 'inherit';
+  registerwrapper.style.display = 'none';
+  feedWrapper.style.display = 'none';
+  headerWrapper.style.display = 'none';
+}
+const displayRegisterFiled = () => {
+  loginWrapper.style.display = 'none';
+  registerwrapper.style.display = 'inherit';
+  feedWrapper.style.display = 'none';
+  headerWrapper.style.display = 'none';
+}
+const displayFeedFiled = () => {
+  loginWrapper.style.display = 'none';
+  registerwrapper.style.display = 'none';
+  feedWrapper.style.display = 'inherit';
+  headerWrapper.style.display = 'inherit';
+}
+const displaylogout= () => {
+  loginFeedBut.style.display = 'none';
+  regFeedBut.style.display = 'none';
+  logoutBut.style.display='inline';
+  
+}
+const displayOffLogout= () => {
+  loginFeedBut.style.display = 'inline';
+  regFeedBut.style.display = 'inline';
+  logoutBut.style.display = 'none';
+  
+}
 
+const getUSerId = async ()=>{
+if (sessionStorage.getItem('token')){
+   displaylogout();
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+  };
+  const response = await fetch(url + '/auth/getUser', fetchOptions);
+  const userInfo = await response.json();
+  userInputId.value=userInfo.user_id;
+
+  console.log(userInfo);
+
+}
+else{
+  displayOffLogout();
+}
+
+}
+getUSerId();
 
 userLoginForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -38,16 +91,16 @@ userLoginForm.addEventListener('submit', async (evt) => {
   console.log('login response', json);
   if (!json.user) {
     console.log(json.message);
-    
-    loginHeader.innerHTML=json.message;
-    loginHeader.className='login_header_error';
-    
+
+    loginHeader.innerHTML = json.message;
+    loginHeader.className = 'login_header_error';
+
 
   } else {
     // save token
-    localStorage.setItem('token', json.token);
-
-    userInputId.value=json.user.user_id;
+    sessionStorage.setItem('token', json.token);
+    displaylogout();
+    userInputId.value = json.user.user_id;
     displayFeedFiled();
 
   }
@@ -84,6 +137,7 @@ regFeedBut.addEventListener('click', (event) => {
 
 
 
+
 userRegisterForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(userRegisterForm);
@@ -104,9 +158,9 @@ userRegisterForm.addEventListener('submit', async (evt) => {
   }
   else {
     displayLoginFiled();
-    loginHeader.innerHTML='You have succesfully registered please Login   ';
+    loginHeader.innerHTML = 'You have succesfully registered please Login   ';
 
-}
+  }
 
 
 });
@@ -160,41 +214,59 @@ regLaterBut.addEventListener('click', (event) => {
 
 });
 
-const displayLoginFiled=()=>{
-  loginWrapper.style.display = 'inherit';
-  registerwrapper.style.display = 'none';
-  feedWrapper.style.display = 'none';
-  headerWrapper.style.display = 'none';
-}
-const displayRegisterFiled=()=>{
-  loginWrapper.style.display = 'none';
-  registerwrapper.style.display = 'inherit';
-  feedWrapper.style.display = 'none';
-  headerWrapper.style.display = 'none';
-}
-const displayFeedFiled=()=>{
-  loginWrapper.style.display = 'none';
-  registerwrapper.style.display = 'none';
-  feedWrapper.style.display = 'inherit';
-  headerWrapper.style.display = 'inherit';
-}
+
+logoutBut.addEventListener('click', async (evt) => {
+  evt.preventDefault();
+  console.log('logout');
+  
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/auth/logout', options);
+    const json = await response.json();
+    console.log(json);
+    // remove token
+    sessionStorage.removeItem('token');
+    
+    // show/hide forms + cats
+     displayLoginFiled();
+     displayOffLogout();
+    // alert('You have logged out');
+  }
+  catch (e) {
+    console.log(e.message);
+  }
+});
+
 
 createPost.addEventListener('submit', async (evt) => {
   evt.preventDefault();
- const fd = new FormData(createPost);
-  
-  const fetchOptions = {
-    method: 'POST',
-    body: fd,
-  };
-   const response = await fetch(url + '/post/makePost', fetchOptions);
-  console.log('yesss');
+  if (sessionStorage.getItem('token')) {
+    const fd = new FormData(createPost);
 
- const json = await response.json();
-  console.log('add response', json);
-   
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+      body: fd,
+    };
+    const response = await fetch(url + '/post/makePost/makePost', fetchOptions);
+    console.log('yesss');
+
+    const json = await response.json();
+    console.log('add response', json);
+
     getAllPost();
-     getItems();
+    getItems();
+  }
+
+  else {
+    alert('please login first');
+  }
 });
 
 const createItemOptions = (items) => {
@@ -228,9 +300,9 @@ const getAllPost = async () => {
     const response = await fetch(url + '/post/getAllPost');
     const posts = await response.json();
     console.log(posts);
-    
+
     createCards(posts);
-    
+
 
   }
   catch (e) {
@@ -239,84 +311,85 @@ const getAllPost = async () => {
 };
 
 
-const createCards=(posts)=>{
-  posts.forEach((post) =>{
+const createCards = (posts) => {
+  cardHolder.innerHTML="";
+  posts.forEach((post) => {
     console.log(post.ownername);
-    
-     const card = document.createElement('div')
-     card.className='card w3-card-2';
-    
-     const cardHeader = document.createElement('div')
-     cardHeader.className='card_header';
-    
-     const profileImage = document.createElement('div')
-     profileImage.className='profile_image';
-    
-     const userName = document.createElement('div')
-     userName.innerHTML=post.ownername
-     userName.className='user_name';
 
-     const postTime = document.createElement('div')
-     postTime.className='time';
-     postTime.innerHTML='1hr';
-     
-    /* cardHeader.appendChild(profileImage);
-     cardHeader.appendChild(userName);
-     cardHeader.appendChild(postTime);
-     card.appendChild(cardHeader); */
+    const card = document.createElement('div')
+    card.className = 'card w3-card-2';
 
-     const cardBody = document.createElement('div')
-     cardBody.className='content';
-     
-     const postPic = document.createElement('img')
-     postPic.src=url+'/'+post.file_path;
-     postPic.className='postPic';
+    const cardHeader = document.createElement('div')
+    cardHeader.className = 'card_header';
 
-     const discription = document.createElement('div')
-     discription.innerHTML=post.description;
-     discription.className='discription';
+    const profileImage = document.createElement('div')
+    profileImage.className = 'profile_image';
 
-     /*cardBody.appendChild(postPic);
-     cardBody.appendChild(discription);
-     card.appendChild(cardBody); */
+    const userName = document.createElement('div')
+    userName.innerHTML = post.ownername
+    userName.className = 'user_name';
 
-     
-     const commentSection = document.createElement('div')
-     commentSection.className='comment';
-
-     const commentForm = document.createElement('form')
-     commentForm.className='comment_input';
-
-     const commentInput = document.createElement('input')
-     commentInput.className='c_input';
-     commentInput.placeholder='wite a comment';
-
-     const commentNumber = document.createElement('div')
-     commentNumber.className='comment_number';
-     commentNumber.innerHTML='23..comment';
-
-     cardHeader.appendChild(profileImage);
-     cardHeader.appendChild(userName);
-     cardHeader.appendChild(postTime);
-     card.appendChild(cardHeader); 
+    const postTime = document.createElement('div')
+    postTime.className = 'time';
+    postTime.innerHTML = '1hr';
 
 
-     cardBody.appendChild(postPic);
-     cardBody.appendChild(discription);
-     card.appendChild(cardBody);
+    const cardBody = document.createElement('div')
+    cardBody.className = 'content';
+
+    const postPic = document.createElement('img')
+    postPic.src = url + '/' + post.file_path;
+    postPic.className = 'postPic';
+
+    const discription = document.createElement('div')
+    discription.innerHTML = post.description;
+    discription.className = 'discription';
 
 
-     commentForm.appendChild(commentInput);
-     commentSection.appendChild(commentForm);
-     commentSection.appendChild(commentNumber);
-     card.appendChild(commentSection);
+    const commentSection = document.createElement('div')
+    commentSection.className = 'comment';
 
-     cardHolder.appendChild(card)
+    const commentForm = document.createElement('form')
+    commentForm.className = 'comment_input';
 
-  
+    const commentInput = document.createElement('input')
+    commentInput.className = 'c_input';
+    commentInput.placeholder = 'wite a comment';
+
+    const commentNumber = document.createElement('div')
+    commentNumber.className = 'comment_number';
+    commentNumber.innerHTML = '23..comment';
+
+    cardHeader.appendChild(profileImage);
+    cardHeader.appendChild(userName);
+    cardHeader.appendChild(postTime);
+    card.appendChild(cardHeader);
+
+
+    cardBody.appendChild(postPic);
+    cardBody.appendChild(discription);
+    card.appendChild(cardBody);
+
+
+    commentForm.appendChild(commentInput);
+    commentSection.appendChild(commentForm);
+    commentSection.appendChild(commentNumber);
+    card.appendChild(commentSection);
+
+    cardHolder.appendChild(card)
+
+
   });
 
 }
+
+
+
+
+
+
+
+
 getAllPost();
 getItems();
 

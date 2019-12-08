@@ -1,5 +1,6 @@
 'use strict';
 const postModel = require('../models/postModel');
+const userModel = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 require('dotenv').config();
@@ -30,12 +31,20 @@ const getItemCatagory = async (req, res) => {
     const posts = await postModel.getItemCatagory();
     await res.json(posts);
 };
+const getUserId = async (req, res) => {
+    const params =[
+        req.body.userId
+    ];
+    const user = await userModel.getUser(params);
+    await res.json(User);
+};
 
 
 module.exports = {
   getAllPost,
   getItemCatagory,
-  createPost
+  createPost,
+  getUserId
 
 
 

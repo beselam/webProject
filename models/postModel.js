@@ -7,7 +7,7 @@ const promisePool = pool.promise();
 const getAll = async () => {
     try {
       const [rows] = await promisePool.execute(
-      'SELECT post.*, user.userName as ownername FROM post JOIN user ON user.user_id = post.user_id');
+      'SELECT post.*, user.userName as ownername FROM post JOIN user ON user.user_id = post.user_id  ORDER BY id DESC');
       return rows;
     } catch (e) {
       console.log('error', e.message);

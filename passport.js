@@ -9,7 +9,7 @@ const db = require('./database/db');
 const passport = require('passport');
 const promisePool = db.promise();
 const userModel = require('./models/userModel');
-
+require('dotenv').config();
 
 
 module.exports =   function  (passport) {
@@ -34,14 +34,14 @@ module.exports =   function  (passport) {
               
               return done(null, {...user}, {message:'Logged In Successfully'}); // use spread syntax to create shallow copy to get rid of binary row type
             } catch (err) {
-              return done(err);
+              return done({message:'The username you entered cannot be identified.'});
             }
         }));
     };
 
    passport.use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey: 'ilenWksp2019',
+        secretOrKey:process.env.TOKEN_SECRET,
       },
       async (jwtPayload, done) => {
         console.log('payload', jwtPayload);

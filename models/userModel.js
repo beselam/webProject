@@ -30,6 +30,16 @@ const getUserLogin = async (params) => {
     console.log('error', e.message);
   }
 };
+const getUser = async (id) => {
+  try {
+    const [rows] = await promisePool.execute(
+        'SELECT * FROM user WHERE user_id = ?;',
+        [id]);
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }
+};
 
 
 const login_user = async (req,done,params) => {
@@ -54,5 +64,6 @@ const login_user = async (req,done,params) => {
 module.exports = {
   addUser,
   login_user,
-  getUserLogin
+  getUserLogin,
+  getUser
 };

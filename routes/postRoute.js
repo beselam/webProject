@@ -13,6 +13,7 @@ const upload = multer({dest: 'uploads/'});
 postRoute.get('/getAllPost',postController.getAllPost);
 postRoute.get('/createPost',postController.createPost);
 postRoute.get('/getItemCatagory',postController.getItemCatagory);
+postRoute.get('/getUserId',postController.getUserId);
 
 
 
