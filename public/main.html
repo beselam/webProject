@@ -19,9 +19,10 @@
             <input class="search_input" type="text" placeholder="Search.." name="search">
             <button class="search_but" type="submit"><i class="fas fa-search"></i></button>
     </form>
-    <button class="header_login" >Login</button>
-    <button class="header_register" > Register</button>
-    <button class="header_logout" >Logout</button>
+    <button class="header_post"><i class="far fa-plus-square"></i></button>
+    <button class="header_login" ><b>Login</b></button>
+    <button class="header_register" ><b>Register</b></button>
+    <button class="header_logout"><b>Logout</b></button>
 
     </header>
     </div>
@@ -51,8 +52,8 @@
                     id="reg_later_bt">Register Later</button></div>
         </div>
         <div class="feed_wrapper" id="feed_wrapper">
-            <div class="left column">
-                <div class="left_child">
+            <div class="left column" id="postCard">
+               
                     
             <div class="post_form">
                         <div class="create_post_image_div">
@@ -71,7 +72,7 @@
                             placeholder="Choose file">
 
                             <button class="light-border" type="submit">Post</button>
-                            <input  name="userId"  id="userId">
+                            <input  name="userId" type="hidden" id="userId">
                         </form>
                     </div>
 

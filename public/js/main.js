@@ -10,8 +10,10 @@ const error_div = document.querySelector('#error_div');
 const registerwrapper = document.querySelector('#register_wrapper');
 const loginFeedBut = document.querySelector('.header_login');
 const logoutBut = document.querySelector('.header_logout');
+const postIcon = document.querySelector('.header_post');
 const regFeedBut = document.querySelector('.header_register');
 const loginHeader = document.querySelector('#login_header');
+const postForm = document.getElementById('postCard');
 const regBackBut = document.querySelector('#reg_back_bt');
 const regLaterBut = document.querySelector('#reg_later_bt');
 //const createPost = document.querySelector('#addPost');
@@ -50,7 +52,20 @@ const displayOffLogout= () => {
   regFeedBut.style.display = 'inline';
   logoutBut.style.display = 'none';
   
+
 }
+
+postIcon.addEventListener('click',(event)=>{
+  console.log('clicked');
+ if(postForm.style.display=='none'){
+  postForm.style.display='inherit'; }
+  else{
+    postForm.style.display='none'
+  }
+
+})
+
+
 
 const getUSerId = async ()=>{
 if (sessionStorage.getItem('token')){
