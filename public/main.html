@@ -89,7 +89,7 @@
         <div class="userProfileWrapper" id="userProfileWrapper">
             <div class="profile_inner_container">
                 <ul>
-                    <li >
+                    <li>
                         <img class="proImage card w3-card-2 " src="pic/pro.jpg" alt="calander_icon">
                     </li>
                     <li class="pro_li ">
@@ -105,7 +105,9 @@
                     </li>
                     <li class="pro_li">
 
-                        <p> status <button style="width: 60px; float:right; background: #14df14; border: none;">Active</button> </p> 
+                        <p> status <button
+                                style="width: 60px; float:right; background: #14df14; border: none;">Active</button>
+                        </p>
                     </li>
 
                 </ul>
@@ -122,7 +124,20 @@
                         <div class="profile_image"></div>
                         <div class="user_name">beselam</div>
                         <div class="time">
-                            <p>1hr</p>
+                            <form class="dropd_form" id="delete_form">
+
+
+                                <div class="dropdown " style="float:left;">
+                                    <button class="dropbtn"><i class="fas fa-ellipsis-h"></i></button>
+                                    <div class="dropdown-content  " style="left:0;">
+                                        <button type="submit">Delete</button>
+                                        <button>Edit</button>
+                                        <button>Share</button>
+                                    </div>
+                                </div>
+                                <input name="postId" type="hidden" id="postId">
+                            </form>
+                            <p class="card_time">1hr</p>
                         </div>
                     </div>
                     <div class="content">
@@ -149,8 +164,7 @@
 
         </div>
     </div>
-    </div>
-
+    
     <script src="js/main.js"></script>
     <script src="./js/serialize.js"></script>
 </body>

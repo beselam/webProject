@@ -22,6 +22,7 @@ const profileName = document.querySelector('#profile_name');
 const userEmail = document.querySelector('#user_email');
 const regFeedBut = document.querySelector('.header_register');
 const loginHeader = document.querySelector('#login_header');
+const postIdInput = document.querySelector('#post_id');
 const postForm = document.getElementById('postCard');
 const regBackBut = document.querySelector('#reg_back_bt');
 const regLaterBut = document.querySelector('#reg_later_bt');
@@ -457,8 +458,62 @@ const createCards = (posts) => {
 
     const postTime = document.createElement('div')
     postTime.className = 'time';
-    postTime.innerHTML = '1hr';
+    //postTime.innerHTML = '1hr';
 
+
+   
+    const dropdownForm= document.createElement('form');
+    dropdownForm.className='dropd_form';
+    dropdownForm.id='dropd_form';
+
+    const postTimer= document.createElement('p');
+    postTime.className='card_time';
+    postTimer.id='card_time';
+
+
+    const dropdownWrapper= document.createElement('div');
+    dropdownWrapper.className='dropdown';
+
+    const postIdInput = document.createElement('input');
+    postIdInput.className='postId';
+    postIdInput.value=post.id;
+    postIdInput.style.display='none';
+
+    const dropdownIconHolder= document.createElement('button');
+    dropdownIconHolder.className='dropbtn';
+    
+    const dropdownIcon= document.createElement('i');
+    dropdownIcon.className='fas fa-ellipsis-h';
+
+    const dropdownContent = document.createElement('div');
+    dropdownContent.className='dropdown-content';
+
+    const dropdownDelete= document.createElement('button');
+    dropdownDelete.className='dropdown_delet_but';
+    dropdownDelete.id='dropdown_delet_but';
+    dropdownDelete.innerHTML='Delete'
+    
+    const dropdownEdit= document.createElement('button');
+    dropdownEdit.className='dropdown_edit_but';
+    dropdownEdit.id='dropdown_edit_but';
+    dropdownEdit.innerHTML='Edit'
+
+    
+    const dropdownShare= document.createElement('button');
+    dropdownShare.className='dropdown_share_but';
+    dropdownShare.id='dropdown_shate_but';
+    dropdownShare.innerHTML='Share'
+
+   /*  dropdownIconHolder.appendChild(dropdownIcon);
+    dropdownContent.appendChild(dropdownDelete);
+    dropdownWrapper.appendChild(dropdownIconHolder);
+    dropdownWrapper.appendChild(dropdownContent);
+     dropdownForm.appendChild(dropdownWrapper);
+     dropdownForm.appendChild(postIdInput);
+     postTimer.appendChild(dropdownForm);
+     postTimer.appendChild(postTimer);
+*/
+     
 
     const cardBody = document.createElement('div')
     cardBody.className = 'content';
@@ -488,6 +543,23 @@ const createCards = (posts) => {
 
     cardHeader.appendChild(profileImage);
     cardHeader.appendChild(userName);
+
+
+    
+    dropdownIconHolder.appendChild(dropdownIcon);
+    dropdownContent.appendChild(dropdownDelete);
+    dropdownContent.appendChild(dropdownEdit);
+    dropdownContent.appendChild(dropdownShare);
+    dropdownWrapper.appendChild(dropdownIconHolder);
+    dropdownWrapper.appendChild(dropdownContent);
+     dropdownForm.appendChild(dropdownWrapper);
+     dropdownForm.appendChild(postIdInput);
+     postTime.appendChild(dropdownForm);
+     postTime.appendChild(postTimer);
+
+
+
+
     cardHeader.appendChild(postTime);
     card.appendChild(cardHeader);
 
