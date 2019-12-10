@@ -14,6 +14,8 @@ postRoute.get('/getAllPost',postController.getAllPost);
 postRoute.get('/createPost',postController.createPost);
 postRoute.get('/getItemCatagory',postController.getItemCatagory);
 postRoute.get('/getUserId',postController.getUserId);
+postRoute.post('/getUserPost',postController.getUserPost);
+postRoute.post('/search',postController.search);
 
 
 

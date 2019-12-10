@@ -40,12 +40,34 @@ const getAll = async () => {
   
   };
 
+  const search = async (params) => {
+    try {
+      const [rows] = await promisePool.execute(
+      'SELECT post.*, user.userName as ownername , catagory.name as catagory_name FROM post JOIN user ON user.user_id = post.user_id JOIN catagory ON catagory.id = post.category_id  WHERE catagory.name=?;',params);
+      return rows;
+    } catch (e) {
+      console.log('error', e.message);
+    }
+  };
+
+  const getUserPost = async (params) => {
+    try {
+      const [rows] = await promisePool.execute(
+      'SELECT post.*, user.userName as ownername , catagory.name as catagory_name FROM post JOIN user ON user.user_id = post.user_id JOIN catagory ON catagory.id = post.category_id  WHERE post.user_id=?;',params);
+      return rows;
+    } catch (e) {
+      console.log('error', e.message);
+    }
+  };
+
 
   
   module.exports = {
     getAll,
     getItemCatagory,
-    addPost
+    addPost,
+    search,
+    getUserPost
     
   };
   

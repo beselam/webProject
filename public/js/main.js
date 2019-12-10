@@ -1,6 +1,8 @@
 'use strict';
 const url = 'http://localhost:4000';
 const userLoginForm = document.querySelector('#userLoginForm');
+const main_container = document.querySelector('#main_container');
+const profile_container = document.querySelector('#userProfileWrapper');
 const userRegisterForm = document.querySelector('#userRegisterForm');
 const headerWrapper = document.querySelector('header');
 const feedWrapper = document.querySelector('#feed_wrapper');
@@ -9,8 +11,15 @@ const loginWrapper = document.querySelector('#login_wrapper');
 const error_div = document.querySelector('#error_div');
 const registerwrapper = document.querySelector('#register_wrapper');
 const loginFeedBut = document.querySelector('.header_login');
+const searchBut = document.querySelector('#search_but');
+const searchInput = document.querySelector('#search_input');
+const searchForm = document.querySelector('#searchForm');
+const searchMessage = document.querySelector('#search_message');
 const logoutBut = document.querySelector('.header_logout');
 const postIcon = document.querySelector('.header_post');
+const profileBut = document.querySelector('#profile');
+const profileName = document.querySelector('#profile_name');
+const userEmail = document.querySelector('#user_email');
 const regFeedBut = document.querySelector('.header_register');
 const loginHeader = document.querySelector('#login_header');
 const postForm = document.getElementById('postCard');
@@ -41,51 +50,151 @@ const displayFeedFiled = () => {
   feedWrapper.style.display = 'inherit';
   headerWrapper.style.display = 'inherit';
 }
-const displaylogout= () => {
+const displayProfielFiled = () => {
+  loginWrapper.style.display = 'none';
+  registerwrapper.style.display = 'none';
+  feedWrapper.style.display = 'inherit';
+  headerWrapper.style.display = 'inherit';
+  profile_container.style.display='inline-block'
+}
+
+const displayOffProfielFiled = () => {
+  loginWrapper.style.display = 'none';
+  registerwrapper.style.display = 'none';
+  feedWrapper.style.display = 'inherit';
+  headerWrapper.style.display = 'inherit';
+  profile_container.style.display='none'
+  main_container.style.display='inherit';
+}
+
+const displaylogout = () => {
   loginFeedBut.style.display = 'none';
   regFeedBut.style.display = 'none';
-  logoutBut.style.display='inline';
-  
+  profileBut.style.display='inline';
+  logoutBut.style.display = 'inline';
+
 }
-const displayOffLogout= () => {
+const displayOffLogout = () => {
   loginFeedBut.style.display = 'inline';
   regFeedBut.style.display = 'inline';
   logoutBut.style.display = 'none';
-  
+  profileBut.style.display='none';
+
 
 }
 
-postIcon.addEventListener('click',(event)=>{
+postIcon.addEventListener('click', (event) => {
   console.log('clicked');
- if(postForm.style.display=='none'){
-  postForm.style.display='inherit'; }
-  else{
-    postForm.style.display='none'
+   displayOffProfielFiled();
+   getAllPost();
+  if (postForm.style.display == 'none') {
+    postForm.style.display = 'inherit';
   }
+  else {
+    postForm.style.display = 'none'
+  }
+
 
 })
 
 
 
-const getUSerId = async ()=>{
-if (sessionStorage.getItem('token')){
-   displaylogout();
+function openSearchBox() {
+ /*  searchInput.style.width = '200px';
+  searchInput.style.cursor = 'text';
+  searchInput.focus(); */
+}
+
+searchForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const data = serializeJson(searchForm);
   const fetchOptions = {
-    method: 'GET',
+    method: 'POST',
     headers: {
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify(data),
   };
-  const response = await fetch(url + '/auth/getUser', fetchOptions);
-  const userInfo = await response.json();
-  userInputId.value=userInfo.user_id;
+  console.log(fetchOptions);
+  const response = await fetch(url + '/post/search', fetchOptions);
+  const items = await response.json();
 
-  console.log(userInfo);
+  if (items.length != 0) {
+    createCards(items);
+
+  }
+  else {
+    searchMessage.style.display = 'inherit';
+    setTimeout(function () {
+      searchMessage.style.display = 'none'
+    }, 3000);
+
+
+  }
+})
+
+profileBut.addEventListener('click' , async (event)=>{
+  
+  const userId =   await getUSerId() ;
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userId),
+  };
+  const response = await fetch(url + '/post/getUserPost', fetchOptions);  
+  const posts = await response.json();
+ if(posts){
+   userProfilePAge();
+   populateProfile();
+   createCards(posts);
+ }
+    
+})
+
+const userProfilePAge=()=>{
+  main_container.style.display='flex';
+  displayProfielFiled();
 
 }
-else{
-  displayOffLogout();
+
+const populateProfile= async ()=>{
+  const user = await getUSerId();
+  const name = user.userName;
+  const email = user.email;
+  profileName.innerHTML=name;
+  userEmail.innerHTML=email;
+
+
 }
+
+
+
+const getUSerId = async () => {
+  if (sessionStorage.getItem('token')) {
+    displaylogout();
+    const fetchOptions = {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/auth/getUser', fetchOptions);
+    const userInfo = await response.json();
+    userInputId.value = userInfo.user_id;
+    const id = userInfo.user_id;
+    console.log(id);
+    
+      console.log(userInfo);
+    return  userInfo;
+  
+
+  }
+  else {
+    displayOffLogout();
+  }
 
 }
 getUSerId();
@@ -233,7 +342,7 @@ regLaterBut.addEventListener('click', (event) => {
 logoutBut.addEventListener('click', async (evt) => {
   evt.preventDefault();
   console.log('logout');
-  
+
   try {
     const options = {
       headers: {
@@ -245,10 +354,12 @@ logoutBut.addEventListener('click', async (evt) => {
     console.log(json);
     // remove token
     sessionStorage.removeItem('token');
-    
+
     // show/hide forms + cats
-     displayLoginFiled();
-     displayOffLogout();
+    displayLoginFiled();
+    displayOffLogout();
+    displayOffProfielFiled();
+    getAllPost();
     // alert('You have logged out');
   }
   catch (e) {
@@ -327,7 +438,7 @@ const getAllPost = async () => {
 
 
 const createCards = (posts) => {
-  cardHolder.innerHTML="";
+  cardHolder.innerHTML = "";
   posts.forEach((post) => {
     console.log(post.ownername);
 
@@ -407,14 +518,3 @@ const createCards = (posts) => {
 
 getAllPost();
 getItems();
-
-
-
-
-
-
-
-
-
-
-

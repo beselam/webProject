@@ -13,20 +13,30 @@
 
 <body>
     <div class="lema">
-    <header class="header_wrapper" id="header_wrapper">
-        <a href=""> <img class="logo" src="pic/logg.PNG" alt=""></a>
-     <form  class="search_form" >
-            <input class="search_input" type="text" placeholder="Search.." name="search">
-            <button class="search_but" type="submit"><i class="fas fa-search"></i></button>
-    </form>
-    <button class="header_post"><i class="far fa-plus-square"></i></button>
-    <button class="header_login" ><b>Login</b></button>
-    <button class="header_register" ><b>Register</b></button>
-    <button class="header_logout"><b>Logout</b></button>
+        <header class="header_wrapper" id="header_wrapper">
+            <div class="header_contents">
+                <a href=""> <img class="logo" src="pic/newlog.PNG" alt=""></a>
 
-    </header>
+                <form class="search_form" id="searchForm">
+                    <input class="search_input" id="search_input" type="text" placeholder="Search.." name="searchItem">
+                    <button class="search_but" onmouseover="openSearchBox()" id="search_but" type="submit"><i
+                            class="fas fa-search"></i></button>
+                </form>
+
+                <button class="header_post"><i class="far fa-plus-square"></i></button>
+                <button class="profile" id="profile"><i class="fas fa-user"></i></button>
+                <button class="header_login"><b>Login</b></button>
+                <button class="header_register"><b>Register</b></button>
+                <button class="header_logout"><b>Logout</b></button>
+            </div>
+        </header>
+        <div class="search_message" id="search_message">
+            <p style="color: white; text-align: center;">SORRY, WE COULDN'T FIND ANY RELATED ITEM </p>
+        </div>
     </div>
-    <div class="main_container">
+
+
+    <div class="main_container" id="main_container">
         <div class="login_wrapper" id="login_wrapper">
             <div class="login_header" id="login_header">long in </div>
             <form method="POST" class="light-border" id="userLoginForm">
@@ -53,69 +63,92 @@
         </div>
         <div class="feed_wrapper" id="feed_wrapper">
             <div class="left column" id="postCard">
-               
-                    
-            <div class="post_form">
-                        <div class="create_post_image_div">
-                            <img class="create_post_image" src="pic/create.PNG" alt="">
 
-                        </div>
-                        <form  class="light-border"  enctype="multipart/form-data" id="addPost">
-                            <select class="light-border add-list" name="catagoryId" required>
-                                <option value="">Item type</option>
-                            </select>
-                            <input class="light-border" type="text" name="description" placeholder="Discription ... " required>
-                            <input class="light-border"
-                            type="file"
-                            name="image"
-                            accept="image/*"
-                            placeholder="Choose file">
 
-                            <button class="light-border" type="submit">Post</button>
-                            <input  name="userId" type="hidden" id="userId">
-                        </form>
+                <div class="post_form">
+                    <div class="create_post_image_div">
+                        <img class="create_post_image" src="pic/create.PNG" alt="">
+
                     </div>
+                    <form class="light-border" enctype="multipart/form-data" id="addPost">
+                        <select class="light-border add-list" name="catagoryId" required>
+                            <option value="">Item type</option>
+                        </select>
+                        <input class="light-border" type="text" name="description" placeholder="Discription ... "
+                            required>
+                        <input class="light-border" type="file" name="image" accept="image/*" placeholder="Choose file">
 
+                        <button class="light-border" type="submit">Post</button>
+                        <input name="userId" type="hidden" id="userId">
+                    </form>
                 </div>
 
             </div>
-            <div class="right column">
-              
 
-                <div class="card_holder" >
-                  
-                    <div class="card w3-card-2">
-                        <div class="card_header">
-                            <div class="profile_image"></div>
-                            <div class="user_name">beselam</div>
-                            <div class="time">
-                                <p>1hr</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <img  class="postPic" src="pic/car2.png" alt="">
+        </div>
+        <div class="userProfileWrapper" id="userProfileWrapper">
+            <div class="profile_inner_container">
+                <ul>
+                    <li >
+                        <img class="proImage card w3-card-2 " src="pic/pro.jpg" alt="calander_icon">
+                    </li>
+                    <li class="pro_li ">
+                        <p class="profile_name" id="profile_name"><b>name developer </b> </p>
+                    </li>
+                    <li class="pro_li">
 
-                            <div class="discription">
-                                <span> USER NAME </span> this is the discription part
-                                this is the discription part <br>
-                                this is the discription part
-                            </div>
+                        <p class="user_email" id="user_email">email </p>
+                    </li>
+                    <li class="pro_li">
 
-                        </div>
-                        <div class="comment">
+                        <p> number of post </p>
+                    </li>
+                    <li class="pro_li">
 
-                            <form action="http://localhost:4000/login" method="POST" class="comment_input">
-                                <input class="c_input" type="text" name="name" placeholder="wite a comment">
+                        <p> status <button style="width: 60px; float:right; background: #14df14; border: none;">Active</button> </p> 
+                    </li>
 
-                            </form>
-                            <div class="comment_number">23..comment </div>
-                        </div>
-                    </div>
-                </div>
+                </ul>
 
 
             </div>
         </div>
+        <div class="right column">
+
+            <div class="card_holder">
+
+                <div class="card w3-card-2">
+                    <div class="card_header">
+                        <div class="profile_image"></div>
+                        <div class="user_name">beselam</div>
+                        <div class="time">
+                            <p>1hr</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img class="postPic" src="pic/car2.png" alt="">
+
+                        <div class="discription">
+                            <span> USER NAME </span> this is the discription part
+                            this is the discription part <br>
+                            this is the discription part
+                        </div>
+
+                    </div>
+                    <div class="comment">
+
+                        <form action="http://localhost:4000/login" method="POST" class="comment_input">
+                            <input class="c_input" type="text" name="name" placeholder="wite a comment">
+
+                        </form>
+                        <div class="comment_number">23..comment </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
     </div>
 
     <script src="js/main.js"></script>

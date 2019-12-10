@@ -38,13 +38,34 @@ const getUserId = async (req, res) => {
     const user = await userModel.getUser(params);
     await res.json(User);
 };
+const search = async (req, res) => {
+    const params =[
+        req.body.searchItem
+    ];
+    const posts = await postModel.search(params);
+    await res.json(posts);
+};
+const getUserPost = async (req, res) => {
+    console.log(req);
+    
+    const params =[
+        req.body.user_id
+    ];
+    
+    const posts = await postModel.getUserPost(params);
+    await res.json(posts);
+
+};
+
 
 
 module.exports = {
   getAllPost,
   getItemCatagory,
   createPost,
-  getUserId
+  getUserId,
+  search,
+  getUserPost
 
 
 
