@@ -1,5 +1,5 @@
 'use strict';
-const url = '/alloffer/';
+const url = '/alloffer';
 const userLoginForm = document.querySelector('#userLoginForm');
 const main_container = document.querySelector('#main_container');
 const profile_container = document.querySelector('#userProfileWrapper');
