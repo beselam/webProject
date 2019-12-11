@@ -12,17 +12,21 @@
 </head>
 
 <body>
+    <div class="mobile_nav" id="mobile_nav"  ></div>
     <div class="lema">
         <header class="header_wrapper" id="header_wrapper">
-            <div class="header_contents">
-                <a href=""> <img class="logo" src="pic/newlog.PNG" alt=""></a>
-
-                <form class="search_form" id="searchForm">
+           <a href=""> <img class="logo" src="pic/newlog.PNG" alt=""></a>
+              <form class="search_form" id="searchForm">
                     <input class="search_input" id="search_input" type="text" placeholder="Search.." name="searchItem">
                     <button class="search_but" onmouseover="openSearchBox()" id="search_but" type="submit"><i
                             class="fas fa-search"></i></button>
                 </form>
+           <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+            <div class="header_contents" id="header_contents">
+               
 
+             
+                <button class="close_nav" id="close_nav"><i class="fas fa-times"></i></button>
                 <button class="header_post"><i class="far fa-plus-square"></i></button>
                 <button class="profile" id="profile"><i class="fas fa-user"></i></button>
                 <button class="header_login"><b>Login</b></button>
@@ -90,7 +94,7 @@
             <div class="profile_inner_container">
                 <ul>
                     <li>
-                        <img class="proImage card w3-card-2 " src="pic/pro.jpg" alt="calander_icon">
+                        <img class="proImage card w3-card-2 " src="pic/smith.jpg" alt="calander_icon">
                     </li>
                     <li class="pro_li ">
                         <p class="profile_name" id="profile_name"><b>name developer </b> </p>
@@ -121,7 +125,9 @@
 
                 <div class="card w3-card-2">
                     <div class="card_header">
-                        <div class="profile_image"></div>
+                        <div class="profile_image">
+                            <img src="" alt="">
+                        </div>
                         <div class="user_name">beselam</div>
                         <div class="time">
                             <form class="dropd_form" id="delete_form">

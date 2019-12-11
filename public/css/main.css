@@ -22,47 +22,78 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+
 header {
-    /* display: none;  */
+    display: none; 
     display: flex !important;
     background: #FAFAFA;
-    border-bottom: 1px solid #ccc;
     position: fixed;
     width: 100%;
     background-color: #3d3d3a;
-
     padding: 22px 1px;
     padding-left: 2%;
-    padding-right: 2%;
-
+    padding-right: 0%;
     top: 0;
     z-index: 5;
 
+}
+a {
+    width: 30%;
+    background-color: #0087cd;
+
+
+}
+.search_form {
+    width: 60%;
+
+}
+.header_contents {
+    width: 51%;
+    display: flex;
+    margin-right: 0px;
+    justify-content: space-evenly;
+ 
+
+}
+.header_post, .profile , .header_login, .header_register , .header_logout {
+    border-radius: 7px;
+    background: #fc0;
+    width: 92px;
+    border: none;
+    height: 35px;
 }
 
 .register_wrapper {
     display: none;
     padding-top: 2%;
-    background: #0087cd !important;
     margin-top: 9% !important;
     max-width: 40em;
     margin: auto;
-    border: 10px solid cornflowerblue;
     border-radius: 8px;
 }
 
+.close_nav{
+    display: none;
+    border-radius: 7px;
+    background: #fc0;
+    width: 92px;
+    border: none;
+    height: 35px;
+    color: blue;
+}
 
-
+.hamburger{
+    display: none;
+}
 
 .login_wrapper {
     display: none;
     padding-top: 2%;
     padding-bottom: 2%;
-    background: #0087cd !important;
     margin-top: 9% !important;
     max-width: 40em;
     margin: auto;
-    border: 10px solid cornflowerblue;
+    border: 10px solid white;
     border-radius: 8px;
 }
 
@@ -77,10 +108,10 @@ header {
 .login_wrapper .noAccount_bt {
     border: 2px solid white;
     border-radius: 11px;
-    background: #0087cd;
     width: 32%;
     height: 35px;
     color: white;
+    background: #fc0;
     margin-left: 34%;
     margin-top: 6%;
 }
@@ -157,17 +188,9 @@ header {
     width :50%;
 }
 
-.header_contents {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
 
-}
 
-.search_form {
-    width: 50%;
 
-}
 
 .search_message {
     display: none;
@@ -189,10 +212,10 @@ header {
     border: 1.5px solid white;
 
     border-radius: 8px;
-    background: #0087cd;
+    background:#d4cca9;
     height: 35px;
     width: 35%;
-    color: white;
+    color: black;
 
 
 }
@@ -200,19 +223,18 @@ header {
 .register_wrapper .reg_later_bt {
     border: 1.5px solid white;
     border-radius: 8px;
-    background: #0087cd;
+    background: #d4cca9;
     height: 35px;
     width: 35%;
     margin-left: 54%;
-    color: white;
+    color: black;
 
 
 }
 
 .register_wrapper .register_header {
     margin-bottom: 5%;
-    color: white;
-    background: #0087cd;
+    color: rgb(49, 46, 46);
     border: 1px;
     border-radius: 5px;
     font-size: large;
@@ -255,11 +277,10 @@ button {
 }
 
 .register_wrapper button {
-    background-color: #ccc;
-    color: #fff;
+    color: black;
 }
 
-.register_wrapper .footer {
+.register_wrapper .register_footer {
     width: 100%;
     display: flex;
     padding: 7% 1%;
@@ -321,12 +342,7 @@ header ::placeholder {
     clear: both;
 }
 
-a {
-    width: 16%;
-    background-color: #0087cd;
 
-
-}
 
 
 .search_input {
@@ -358,12 +374,6 @@ a {
 
 }
 
-
-.fas {
-    color: #FAFAFA !important;
-    font-size: 16px;
-
-}
 
 
 .right {
@@ -403,59 +413,9 @@ a {
     text-align: center;
 }
 
-.header_login {
-    border-radius: 7px;
-    background: #fc0;
-    color: black;
-    width: 10%;
-    border: none;
-    height: 35px;
 
 
-}
 
-.header_post {
-    border-radius: 7px;
-    background: #fc0;
-    color: white;
-    width: 10%;
-    border:none;
-    height: 35px;
-}
-
-.header_logout {
-    border-radius: 7px;
-    background: #fc0;
-    color: black;
-    width: 10%;
-    border: none;
-    height: 35px;
-
-
-}
-
-.profile {
-    border-radius: 7px;
-    background: #fc0;
-    color: black;
-    width: 10%;
-    border: none;
-    height: 35px;  
-}
-.profile:focus{
- outline: none;
-}
-
-.header_register {
-    border-radius: 7px;
-    background: #fc0;
-    color: black;
-    width: 10%;
-    border: none;
-    height: 35px;
-
-
-}
 
 .left_child {
     height: 70%;
@@ -506,7 +466,14 @@ a {
     width: 100%;
     text-align: center;
 }
+.search_but .fas{
+    color: white;
+}
 
+.pro_img{
+    width: 100%;
+    border-radius: 20px;
+}
 .card {
 
 
@@ -539,7 +506,6 @@ a {
 .user_name {
     display: inline-block;
     position: relative;
-    bottom: 10px;
     padding-left: 7px;
 }
 
@@ -587,6 +553,76 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
+
+    a {
+        width: 30%;
+        background-color: #0087cd;
+    
+    
+    }
+    .logo {
+        width: 50px;
+        animation: move 1s infinite alternate;
+    }
+    
+  @keyframes move {
+        from {
+            transform: translateX(0px)
+        }
+    
+        to {
+            transform: translateX(0px);
+        }
+    
+    } 
+
+    
+    .search_form {
+        width: 60%;
+    
+    }
+    .header_contents {
+        width: 51%; 
+        background: #fc0;
+        padding-top: 20px ;
+        justify-content: space-evenly;
+        position: absolute;
+        right: 0;
+        top: 73px;
+        height: 500px;
+        display: none;
+        transition: width 2s;
+    
+    }
+.hamburger{
+    background: #3d3d3d;;
+    padding-bottom: 29px;
+    width: 15%;
+    border-radius: 0px;
+    border: none;
+    height: 24px;
+    display: block ;
+}
+.hamburger .fas{
+    color: #fc0;
+}
+
+    .header_post, .profile , .header_login, .header_register , .header_logout , .close_nav{
+        padding: 28px 10px;
+        background: #fc0;
+        padding-bottom: 45px;
+        width: 100%;
+        border-radius: 0px;
+        border: none;
+        height: 38px;
+        display: block !important;
+    }
+  
+   
+    .header_contents  button:hover{
+        background:rgb(240, 208, 80);
+    }
+
     .card_holder {
         margin-bottom: 4%;
         width: 90%;
@@ -598,7 +634,47 @@ a {
 
     }
 
-    .new_search_box {
+    .mobile_nav{
+        width: 100%;
+        height: 300px;
+        height: 89vh;
+        position: absolute;
+        position: fixed;
+        right: 0;
+        z-index: 2;
+        background: #3d3d3a;
+        opacity: 0.7;
+        display: none;
+    }
+    .search_input {
+        width: 80%;
+        padding: 3px 0px;
+        padding-left: 10px;
+        margin-top: -4px;
+        border-radius: 10px;
+        color: #FAFAFA;
+        background-color: #3d3d3a;
+        border: 1.5px solid #FAFAFA;
+    }
+  
+    .search_but{
+        width: 10px;
+        background-color: #3d3d3a;
+        border-left: 0;
+        padding: 0px 0px;
+        margin-top: 0px;
+        border-radius: 10px;
+        margin-left: -15%;
+        padding-top: -7px;
+        border: none;
+    }
+    .search_but .fas{
+        color: white;
+        font-size: 15px;
+    }
+}
+
+  /*  .new_search_box {
         text-align: center;
         position: relative;
 
@@ -636,14 +712,13 @@ a {
 
 
     .search_but {
-        width: 25px;
-        height: 25px;
-        margin: 9px 0px 0 6px;
+        width: 18px;
+        height: 17px;
+        margin: 12px 0px 0 -31px;
         padding: 0;
-        right: 7px;
         position: absolute;
         cursor: pointer;
-        background: rgb(0, 110, 255);
+        background: white;
 
     }
 
@@ -666,13 +741,17 @@ a {
         outline: none;
     }
 
-    header {
-        height: 100px;
+
+
+*/
+@media only screen and (min-width: 600px) {
+
+
+    .header_post, .profile , .header_login, .header_register , .header_logout , .close_nav{
+        width: 64px;
+        
     }
 
-}
-
-@media only screen and (min-width: 600px) {
     .card_holder {
         margin-bottom: 4%;
         width: 90%;
@@ -683,14 +762,38 @@ a {
         grid-gap: 15px;
 
     }
+    .header_contents {
+        width: 51% !important ;
+        display: flex !important;
+        margin-right: 0px;
+        justify-content: space-evenly;
+        
+     
+    
+    }
     .search_form {
-        width: 42%;
+        width: 60%;
         margin-left: 26px;
     }
 
 }
 
 @media only screen and (min-width: 1200px) {
+
+    
+    .header_post, .profile , .header_login, .header_register , .header_logout , .close_nav{
+        width: 20%;
+        
+    }
+
+    .header_contents {
+        width: 51% !important;
+        display: flex !important;
+        margin-right: 0px;
+        justify-content: space-evenly;
+     
+    
+    }
     .card_holder {
         margin-bottom: 4%;
         width: 80%;
@@ -768,3 +871,5 @@ a {
   .dropdown:hover .dropbtn {
   
   }
+
+}

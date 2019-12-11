@@ -8,12 +8,16 @@ const headerWrapper = document.querySelector('header');
 const feedWrapper = document.querySelector('#feed_wrapper');
 const cardHolder = document.querySelector('.card_holder');
 const loginWrapper = document.querySelector('#login_wrapper');
+const hamburgerMenu = document.querySelector('#hamburger');
+const mobileNav = document.querySelector('#mobile_nav');
 const error_div = document.querySelector('#error_div');
 const registerwrapper = document.querySelector('#register_wrapper');
 const loginFeedBut = document.querySelector('.header_login');
+const headerContent = document.querySelector('#header_contents');
 const searchBut = document.querySelector('#search_but');
 const searchInput = document.querySelector('#search_input');
 const searchForm = document.querySelector('#searchForm');
+const deleteForm = document.querySelector('#delete_form');
 const searchMessage = document.querySelector('#search_message');
 const logoutBut = document.querySelector('.header_logout');
 const postIcon = document.querySelector('.header_post');
@@ -31,6 +35,47 @@ const createPost = document.getElementById('addPost');
 const noAccount = document.getElementById('mm');
 const itemLists = document.querySelectorAll('.add-list');
 const userInputId = document.getElementById('userId');
+const closeNav = document.querySelector('#close_nav');
+
+
+
+hamburgerMenu.addEventListener('click',(req,res)=>{
+mobileNav.style.display='inherit';
+headerContent.style.display='block';
+headerContent.style.width='52%';
+})
+
+
+closeNav.addEventListener('click',(req,res)=>{
+  mobileNav.style.display='none';
+ headerContent.style.width='0%';
+  }) 
+
+
+
+deleteForm.addEventListener('submit' , async (event)=>{
+  event.preventDefault();
+  console.log('yess am clicked');
+  
+  
+/*  const userId =   await getUSerId() ;
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userId),
+  };
+  const response = await fetch(url + '/post/getUserPost', fetchOptions);  
+  const posts = await response.json();
+ if(posts){
+   userProfilePAge();
+   populateProfile();
+   createCards(posts);
+ }
+    */
+});
+
 
 
 const displayLoginFiled = () => {
@@ -411,6 +456,9 @@ const createItemOptions = (items) => {
   });
 };
 
+
+
+
 // get users to form options
 const getItems = async () => {
   try {
@@ -451,6 +499,10 @@ const createCards = (posts) => {
 
     const profileImage = document.createElement('div')
     profileImage.className = 'profile_image';
+    
+    const image =document.createElement('img');
+    image.className='pro_img';
+    image.src='./pic/pro.jpg';
 
     const userName = document.createElement('div')
     userName.innerHTML = post.ownername
@@ -490,6 +542,7 @@ const createCards = (posts) => {
 
     const dropdownDelete= document.createElement('button');
     dropdownDelete.className='dropdown_delet_but';
+    dropdownDelete.type='submit';
     dropdownDelete.id='dropdown_delet_but';
     dropdownDelete.innerHTML='Delete'
     
@@ -503,17 +556,6 @@ const createCards = (posts) => {
     dropdownShare.className='dropdown_share_but';
     dropdownShare.id='dropdown_shate_but';
     dropdownShare.innerHTML='Share'
-
-   /*  dropdownIconHolder.appendChild(dropdownIcon);
-    dropdownContent.appendChild(dropdownDelete);
-    dropdownWrapper.appendChild(dropdownIconHolder);
-    dropdownWrapper.appendChild(dropdownContent);
-     dropdownForm.appendChild(dropdownWrapper);
-     dropdownForm.appendChild(postIdInput);
-     postTimer.appendChild(dropdownForm);
-     postTimer.appendChild(postTimer);
-*/
-     
 
     const cardBody = document.createElement('div')
     cardBody.className = 'content';
@@ -539,8 +581,9 @@ const createCards = (posts) => {
 
     const commentNumber = document.createElement('div')
     commentNumber.className = 'comment_number';
-    commentNumber.innerHTML = '23..comment';
-
+    commentNumber.innerHTML = '0..comment';
+   
+    profileImage.appendChild(image);
     cardHeader.appendChild(profileImage);
     cardHeader.appendChild(userName);
 
