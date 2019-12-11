@@ -194,6 +194,7 @@ profileBut.addEventListener('click' , async (event)=>{
   const posts = await response.json();
  if(posts){
    userProfilePAge();
+   postForm.style.display='none';
    populateProfile();
    createCards(posts);
  }
