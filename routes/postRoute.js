@@ -16,6 +16,7 @@ postRoute.get('/getItemCatagory',postController.getItemCatagory);
 postRoute.get('/getUserId',postController.getUserId);
 postRoute.post('/getUserPost',postController.getUserPost);
 postRoute.post('/search',postController.search);
+postRoute.delete('/deletePost',postController.deletePost);
 
 
 

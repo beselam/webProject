@@ -50,6 +50,18 @@ const getAll = async () => {
     }
   };
 
+  const deletePost = async (params) => {
+    try {
+      const [rows] = await promisePool.execute(
+          'DELETE FROM post WHERE id = ?;',
+          params);
+      return rows;
+    }
+    catch (e) {
+      console.log('error', e.message);
+    }
+  };
+
   const getUserPost = async (params) => {
     try {
       const [rows] = await promisePool.execute(
@@ -67,7 +79,8 @@ const getAll = async () => {
     getItemCatagory,
     addPost,
     search,
-    getUserPost
+    getUserPost,
+    deletePost
     
   };
   

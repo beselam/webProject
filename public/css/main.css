@@ -39,7 +39,7 @@ header {
 }
 a {
     width: 30%;
-    background-color: #0087cd;
+    background-color: #3d3d3a;
 
 
 }
@@ -360,18 +360,6 @@ header ::placeholder {
 
 .logo {
     width: 80px;
-    animation: move 1s infinite alternate;
-}
-
-@keyframes move {
-    from {
-        transform: translateX(0px)
-    }
-
-    to {
-        transform: translateX(50px);
-    }
-
 }
 
 

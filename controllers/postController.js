@@ -56,6 +56,18 @@ const getUserPost = async (req, res) => {
     await res.json(posts);
 
 };
+const deletePost = async (req, res) => {
+    console.log(req);
+    
+    const params =[
+        req.body.postID
+    ];
+    
+    const posts = await postModel.deletePost(params);
+    await res.json(posts); 
+
+};
+
 
 
 
@@ -65,7 +77,8 @@ module.exports = {
   createPost,
   getUserId,
   search,
-  getUserPost
+  getUserPost,
+  deletePost
 
 
 

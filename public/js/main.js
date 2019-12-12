@@ -1,5 +1,7 @@
 'use strict';
-const url = '/alloffer';
+//const url = '/alloffer';
+//const url = '';
+const url='http://localhost:4000'
 const userLoginForm = document.querySelector('#userLoginForm');
 const main_container = document.querySelector('#main_container');
 const profile_container = document.querySelector('#userProfileWrapper');
@@ -36,8 +38,8 @@ const noAccount = document.getElementById('mm');
 const itemLists = document.querySelectorAll('.add-list');
 const userInputId = document.getElementById('userId');
 const closeNav = document.querySelector('#close_nav');
-
-
+//const but = document.querySelector('#dropdown_delet_but')
+const delet_but = document.getElementById('dropdown_delet_but');
 
 hamburgerMenu.addEventListener('click',(req,res)=>{
 mobileNav.style.display='inherit';
@@ -532,6 +534,12 @@ const createCards = (posts) => {
     postIdInput.value=post.id;
     postIdInput.style.display='none';
 
+    
+    const postUsId = document.createElement('input');
+    postUsId.className='postUsId';
+    postUsId.value=post.user_id;
+    postUsId.style.display='none';
+
     const dropdownIconHolder= document.createElement('button');
     dropdownIconHolder.className='dropbtn';
     
@@ -543,20 +551,49 @@ const createCards = (posts) => {
 
     const dropdownDelete= document.createElement('button');
     dropdownDelete.className='dropdown_delet_but';
-    dropdownDelete.type='submit';
-    dropdownDelete.id='dropdown_delet_but';
-    dropdownDelete.innerHTML='Delete'
-    
-    const dropdownEdit= document.createElement('button');
-    dropdownEdit.className='dropdown_edit_but';
-    dropdownEdit.id='dropdown_edit_but';
-    dropdownEdit.innerHTML='Edit'
+  //  dropdownDelete.type='submit';
+     dropdownDelete.id='dropdown_delet_but';
+     dropdownDelete.innerHTML='Delete';
 
+     
+     dropdownDelete.value=post.id;
+     dropdownDelete.title=post.user_id;
+
+    dropdownDelete.addEventListener('click', async (event)=>{
+     event.preventDefault();
+  
+    const  postOwner = postUsId.value
+    const  clickedPOstId = postIdInput.value
+    const pageOwnerId= userInputId.value
+
+       if (pageOwnerId==postOwner){
+         console.log('you can delete');
+
+       const data = {"userID":pageOwnerId,"postID":clickedPOstId}
+        
+
+         const fetchOptions = {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        };
+        const response = await fetch(url + '/post/deletePost', fetchOptions);
+       const dataa = await response.json();
+        if(dataa){
+          getAllPost();
+        }
+      
+       }
+       else{
+         alert('it is not your post');
+       }
+     
     
-    const dropdownShare= document.createElement('button');
-    dropdownShare.className='dropdown_share_but';
-    dropdownShare.id='dropdown_shate_but';
-    dropdownShare.innerHTML='Share'
+      
+    });
+    
 
     const cardBody = document.createElement('div')
     cardBody.className = 'content';
@@ -568,21 +605,6 @@ const createCards = (posts) => {
     const discription = document.createElement('div')
     discription.innerHTML = post.description;
     discription.className = 'discription';
-
-
-    const commentSection = document.createElement('div')
-    commentSection.className = 'comment';
-
-    const commentForm = document.createElement('form')
-    commentForm.className = 'comment_input';
-
-    const commentInput = document.createElement('input')
-    commentInput.className = 'c_input';
-    commentInput.placeholder = 'wite a comment';
-
-    const commentNumber = document.createElement('div')
-    commentNumber.className = 'comment_number';
-    commentNumber.innerHTML = '0..comment';
    
     profileImage.appendChild(image);
     cardHeader.appendChild(profileImage);
@@ -592,12 +614,11 @@ const createCards = (posts) => {
     
     dropdownIconHolder.appendChild(dropdownIcon);
     dropdownContent.appendChild(dropdownDelete);
-    dropdownContent.appendChild(dropdownEdit);
-    dropdownContent.appendChild(dropdownShare);
     dropdownWrapper.appendChild(dropdownIconHolder);
     dropdownWrapper.appendChild(dropdownContent);
      dropdownForm.appendChild(dropdownWrapper);
      dropdownForm.appendChild(postIdInput);
+     dropdownForm.appendChild(postUsId);
      postTime.appendChild(dropdownForm);
      postTime.appendChild(postTimer);
 
@@ -611,13 +632,6 @@ const createCards = (posts) => {
     cardBody.appendChild(postPic);
     cardBody.appendChild(discription);
     card.appendChild(cardBody);
-
-
-    commentForm.appendChild(commentInput);
-    commentSection.appendChild(commentForm);
-    commentSection.appendChild(commentNumber);
-    card.appendChild(commentSection);
-
     cardHolder.appendChild(card)
 
 
@@ -628,9 +642,7 @@ const createCards = (posts) => {
 
 
 
-
-
-
-
 getAllPost();
 getItems();
+
+
