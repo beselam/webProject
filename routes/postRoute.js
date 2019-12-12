@@ -1,3 +1,6 @@
+
+// this is the route for user post 
+
 const express = require('express');
 const postRoute = express.Router();
 const {body, sanitizeBody} = require('express-validator');
@@ -22,6 +25,7 @@ postRoute.delete('/deletePost',postController.deletePost);
 
 postRoute.post('/makePost', upload.single('image'), (req, res,next) => {
     console.log(' post file', req.file);
+    // chech the file exist in the req 
     if (req.file === undefined) {
         console.log('here');
         

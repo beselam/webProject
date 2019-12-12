@@ -3,7 +3,7 @@ const pool = require('../database/db');
 const promisePool = pool.promise();
 
 
-
+// add the user to the user table 
 const addUser = async (params) => {
   try {
     const [rows] = await promisePool.execute(
@@ -30,6 +30,7 @@ const getUserLogin = async (params) => {
     console.log('error', e.message);
   }
 };
+// get the user data 
 const getUser = async (id) => {
   try {
     const [rows] = await promisePool.execute(
@@ -40,6 +41,7 @@ const getUser = async (id) => {
     console.log('error', e.message);
   }
 };
+
 
 
 const login_user = async (req,done,params) => {

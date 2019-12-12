@@ -3,7 +3,7 @@ const pool = require('../database/db');
 const promisePool = pool.promise();
 
 
-
+// make a join and get all the post  
 const getAll = async () => {
     try {
       const [rows] = await promisePool.execute(
@@ -13,6 +13,7 @@ const getAll = async () => {
       console.log('error', e.message);
     }
   };
+  // get all the catagory from the server 
   const getItemCatagory = async () => {
     try {
       const [rows] = await promisePool.execute('SELECT * FROM catagory;');
@@ -22,6 +23,7 @@ const getAll = async () => {
     }
   };
 
+  // send the post to the database 
   const addPost  = async (params) => {
       console.log('from model'+params);
       
@@ -40,6 +42,7 @@ const getAll = async () => {
   
   };
 
+  // search for catagory 
   const search = async (params) => {
     try {
       const [rows] = await promisePool.execute(
@@ -50,6 +53,7 @@ const getAll = async () => {
     }
   };
 
+  // delete the post 
   const deletePost = async (params) => {
     try {
       const [rows] = await promisePool.execute(
@@ -61,6 +65,7 @@ const getAll = async () => {
       console.log('error', e.message);
     }
   };
+
 
   const getUserPost = async (params) => {
     try {

@@ -41,6 +41,10 @@ const closeNav = document.querySelector('#close_nav');
 //const but = document.querySelector('#dropdown_delet_but')
 const delet_but = document.getElementById('dropdown_delet_but');
 
+
+
+// mobile version icon listener 
+
 hamburgerMenu.addEventListener('click',(req,res)=>{
 mobileNav.style.display='inherit';
 headerContent.style.display='block';
@@ -48,38 +52,16 @@ headerContent.style.width='52%';
 })
 
 
+
+
+//close the nav bar
 closeNav.addEventListener('click',(req,res)=>{
   mobileNav.style.display='none';
  headerContent.style.width='0%';
   }) 
 
 
-
-deleteForm.addEventListener('submit' , async (event)=>{
-  event.preventDefault();
-  console.log('yess am clicked');
-  
-  
-/*  const userId =   await getUSerId() ;
-  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(userId),
-  };
-  const response = await fetch(url + '/post/getUserPost', fetchOptions);  
-  const posts = await response.json();
- if(posts){
-   userProfilePAge();
-   populateProfile();
-   createCards(posts);
- }
-    */
-});
-
-
-
+  // functiion to set up the css for diffrent display type 
 const displayLoginFiled = () => {
   loginWrapper.style.display = 'inherit';
   registerwrapper.style.display = 'none';
@@ -131,6 +113,9 @@ const displayOffLogout = () => {
 
 }
 
+
+
+//  display the user posting filed 
 postIcon.addEventListener('click', (event) => {
   console.log('clicked');
    displayOffProfielFiled();
@@ -146,13 +131,7 @@ postIcon.addEventListener('click', (event) => {
 })
 
 
-
-function openSearchBox() {
- /*  searchInput.style.width = '200px';
-  searchInput.style.cursor = 'text';
-  searchInput.focus(); */
-}
-
+// send the search post request 
 searchForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -182,6 +161,8 @@ searchForm.addEventListener('submit', async (event) => {
   }
 })
 
+
+// create a user profile page 
 profileBut.addEventListener('click' , async (event)=>{
   
   const userId =   await getUSerId() ;
@@ -220,7 +201,7 @@ const populateProfile= async ()=>{
 }
 
 
-
+// get the logged user id 
 const getUSerId = async () => {
   if (sessionStorage.getItem('token')) {
     displaylogout();
@@ -248,6 +229,7 @@ const getUSerId = async () => {
 }
 getUSerId();
 
+// user login 
 userLoginForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(userLoginForm);
@@ -279,6 +261,7 @@ userLoginForm.addEventListener('submit', async (evt) => {
   }
 });
 
+// if user has no account this will take the user to registration 
 noAccount.addEventListener('click', (event) => {
   console.log('clicked');
 
@@ -310,7 +293,7 @@ regFeedBut.addEventListener('click', (event) => {
 
 
 
-
+// register the user 
 userRegisterForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(userRegisterForm);
@@ -339,7 +322,7 @@ userRegisterForm.addEventListener('submit', async (evt) => {
 });
 
 
-
+// create an error message box 
 const displayError = (error) => {
   error.forEach(element => {
     const error_message = element.msg;
@@ -353,6 +336,7 @@ const displayError = (error) => {
 }
 
 
+//create an error box for login errors 
 const displayLoginHeader = (message) => {
   message.forEach(element => {
     const error_message = element.msg;
@@ -388,6 +372,7 @@ regLaterBut.addEventListener('click', (event) => {
 });
 
 
+// logout the user
 logoutBut.addEventListener('click', async (evt) => {
   evt.preventDefault();
   console.log('logout');
@@ -417,6 +402,7 @@ logoutBut.addEventListener('click', async (evt) => {
 });
 
 
+// send the user post 
 createPost.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   if (sessionStorage.getItem('token')) {
@@ -444,6 +430,7 @@ createPost.addEventListener('submit', async (evt) => {
   }
 });
 
+// populate the catagory option 
 const createItemOptions = (items) => {
   itemLists.forEach((list) => {
     // clear user list
@@ -489,6 +476,8 @@ const getAllPost = async () => {
 };
 
 
+
+// create a card for displaying user post 
 const createCards = (posts) => {
   cardHolder.innerHTML = "";
   posts.forEach((post) => {

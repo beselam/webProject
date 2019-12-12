@@ -1,30 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
-*:focus{
+
+*:focus {
     outline: none;
 }
 
 html {
     height: 100%;
-
 }
 
 body {
-
     background: #FAFAFA;
     height: 100%;
     font-family: 'Montserrat', sans-serif;
 }
 
-
 header {
-    display: none; 
+    display: none;
     display: flex !important;
     background: #FAFAFA;
     position: fixed;
@@ -35,27 +32,25 @@ header {
     padding-right: 0%;
     top: 0;
     z-index: 5;
-
 }
+
 a {
     width: 30%;
     background-color: #3d3d3a;
-
-
 }
+
 .search_form {
     width: 60%;
-
 }
+
 .header_contents {
     width: 51%;
     display: flex;
     margin-right: 0px;
     justify-content: space-evenly;
- 
-
 }
-.header_post, .profile , .header_login, .header_register , .header_logout {
+
+.header_post, .profile, .header_login, .header_register, .header_logout {
     border-radius: 7px;
     background: #fc0;
     width: 92px;
@@ -72,7 +67,7 @@ a {
     border-radius: 8px;
 }
 
-.close_nav{
+.close_nav {
     display: none;
     border-radius: 7px;
     background: #fc0;
@@ -82,7 +77,7 @@ a {
     color: blue;
 }
 
-.hamburger{
+.hamburger {
     display: none;
 }
 
@@ -97,13 +92,10 @@ a {
     border-radius: 8px;
 }
 
-
 .feed_wrapper {
     height: 100%;
     /*  display: none;  */
-
 }
-
 
 .login_wrapper .noAccount_bt {
     border: 2px solid white;
@@ -134,63 +126,63 @@ a {
     margin-bottom: 7%;
     text-align: center;
 }
-.userProfileWrapper{
+
+.userProfileWrapper {
     width: 30%;
     position: sticky;
     top: 87px;
     margin-top: 111px;
-    background:#EDEAE5;
+    background: #EDEAE5;
     height: 100%;
     display: none;
     height: 100vh;
 }
+
 .userProfileWrapper li {
     list-style-type: none;
-
 }
-.userProfileWrapper li:nth-child(1){
+
+.userProfileWrapper li:nth-child(1) {
     text-align: center;
     padding: 11% 1%;
-    
 }
-.userProfileWrapper li:nth-child(2){
+
+.userProfileWrapper li:nth-child(2) {
     text-align: center;
     padding: 7% 1%;
-    
 }
-.userProfileWrapper .profile_name{
+
+.userProfileWrapper .profile_name {
     font-size: 20px;
     text-align: center;
 }
 
-.profile_right{
+.profile_right {
     background: #FAFAFA;
     width: 60%;
-   text-align: center;
+    text-align: center;
     display: inline-block;
     padding-top: 50px;
     margin-top: 50px;
-    height: 100%;  
-
+    height: 100%;
 }
-.profile_inner_container{
-   background: #FFFFFF;
+
+.profile_inner_container {
+    background: #FFFFFF;
     /* padding: 10px 38px; */
     width: 91%;
     margin: auto;
     margin-top: 28px;
 }
-.userProfileWrapper .pro_li{
-    padding: 10px 10px ;
+
+.userProfileWrapper .pro_li {
+    padding: 10px 10px;
     border-top: 1px solid;
 }
+
 .userProfileWrapper .proImage {
-    width :50%;
+    width: 50%;
 }
-
-
-
-
 
 .search_message {
     display: none;
@@ -210,14 +202,11 @@ a {
 
 .register_wrapper .reg_back_bt {
     border: 1.5px solid white;
-
     border-radius: 8px;
-    background:#d4cca9;
+    background: #d4cca9;
     height: 35px;
     width: 35%;
     color: black;
-
-
 }
 
 .register_wrapper .reg_later_bt {
@@ -228,8 +217,6 @@ a {
     width: 35%;
     margin-left: 54%;
     color: black;
-
-
 }
 
 .register_wrapper .register_header {
@@ -269,8 +256,7 @@ a {
     width: 100%;
 }
 
-.register_wrapper input,
-button {
+.register_wrapper input, button {
     display: inline-block;
     width: 100%;
     margin: .5em 0;
@@ -294,7 +280,6 @@ button {
     border: 1px solid darkgoldenrod;
     padding: 1% 1%;
     border-radius: 6px;
-
 }
 
 .register_wrapper .register_later {
@@ -304,7 +289,6 @@ button {
     border: 1px solid darkgoldenrod;
     padding: 1% 1%;
     border-radius: 6px;
-
 }
 
 .register_wrapper .error_box {
@@ -316,7 +300,6 @@ button {
     width: 100%;
 }
 
-
 .search_but {
     width: 10px;
     background-color: #3d3d3a;
@@ -327,13 +310,10 @@ button {
     margin-left: -9%;
     padding-top: -7px;
     border: none;
-
 }
-
 
 header ::placeholder {
     color: #FAFAFA;
-
 }
 
 .feed_container:after {
@@ -341,9 +321,6 @@ header ::placeholder {
     display: table;
     clear: both;
 }
-
-
-
 
 .search_input {
     width: 80%;
@@ -354,15 +331,11 @@ header ::placeholder {
     color: #FAFAFA;
     background-color: #3d3d3a;
     border: 2px solid #FAFAFA;
-
-
 }
 
 .logo {
     width: 80px;
 }
-
-
 
 .right {
     background: #FAFAFA;
@@ -378,9 +351,7 @@ header ::placeholder {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
     grid-gap: 15px;
-
 }
 
 .column {
@@ -401,20 +372,17 @@ header ::placeholder {
     text-align: center;
 }
 
-
-
-
-
 .left_child {
     height: 70%;
     position: fixed;
     width: 29%;
 }
 
-.far , .fas  {
+.far, .fas {
     font-size: 17px;
     color: black;
 }
+
 .fa-user:before {
     color: black;
     content: "\f007";
@@ -442,7 +410,6 @@ header ::placeholder {
     border-radius: 8px;
     border: 1px solid #ccc;
     margin-bottom: 3%;
-
 }
 
 .light-border {
@@ -454,17 +421,17 @@ header ::placeholder {
     width: 100%;
     text-align: center;
 }
-.search_but .fas{
+
+.search_but .fas {
     color: white;
 }
 
-.pro_img{
+.pro_img {
     width: 100%;
     border-radius: 20px;
 }
+
 .card {
-
-
     background: #fff;
     height: 100%;
     width: 100%;
@@ -473,7 +440,6 @@ header ::placeholder {
     border: 8px solid #ffffff8a;
     border-radius: 8px;
     padding-bottom: 0%;
-
 }
 
 .card_header {
@@ -488,7 +454,6 @@ header ::placeholder {
     height: 35px;
     border-radius: 50%;
     display: inline-block;
-
 }
 
 .user_name {
@@ -521,7 +486,6 @@ header ::placeholder {
 .comment_input {
     width: 75%;
     display: inline-block;
-
 }
 
 .comment_number {
@@ -541,38 +505,29 @@ header ::placeholder {
 }
 
 @media only screen and (max-width: 600px) {
-
     a {
         width: 30%;
         background-color: #0087cd;
-    
-    
     }
     .logo {
         width: 50px;
         animation: move 1s infinite alternate;
     }
-    
-  @keyframes move {
+    @keyframes move {
         from {
             transform: translateX(0px)
         }
-    
         to {
             transform: translateX(0px);
         }
-    
-    } 
-
-    
+    }
     .search_form {
         width: 60%;
-    
     }
     .header_contents {
-        width: 51%; 
+        width: 51%;
         background: #fc0;
-        padding-top: 20px ;
+        padding-top: 20px;
         justify-content: space-evenly;
         position: absolute;
         right: 0;
@@ -580,22 +535,21 @@ header ::placeholder {
         height: 500px;
         display: none;
         transition: width 2s;
-    
     }
-.hamburger{
-    background: #3d3d3d;;
-    padding-bottom: 29px;
-    width: 15%;
-    border-radius: 0px;
-    border: none;
-    height: 24px;
-    display: block ;
-}
-.hamburger .fas{
-    color: #fc0;
-}
-
-    .header_post, .profile , .header_login, .header_register , .header_logout , .close_nav{
+    .hamburger {
+        background: #3d3d3d;
+        ;
+        padding-bottom: 29px;
+        width: 15%;
+        border-radius: 0px;
+        border: none;
+        height: 24px;
+        display: block;
+    }
+    .hamburger .fas {
+        color: #fc0;
+    }
+    .header_post, .profile, .header_login, .header_register, .header_logout, .close_nav {
         padding: 28px 10px;
         background: #fc0;
         padding-bottom: 45px;
@@ -605,24 +559,18 @@ header ::placeholder {
         height: 38px;
         display: block !important;
     }
-  
-   
-    .header_contents  button:hover{
-        background:rgb(240, 208, 80);
+    .header_contents button:hover {
+        background: rgb(240, 208, 80);
     }
-
     .card_holder {
         margin-bottom: 4%;
         width: 90%;
         margin: auto;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-
         grid-gap: 15px;
-
     }
-
-    .mobile_nav{
+    .mobile_nav {
         width: 100%;
         height: 300px;
         height: 89vh;
@@ -644,8 +592,7 @@ header ::placeholder {
         background-color: #3d3d3a;
         border: 1.5px solid #FAFAFA;
     }
-  
-    .search_but{
+    .search_but {
         width: 10px;
         background-color: #3d3d3a;
         border-left: 0;
@@ -656,131 +603,45 @@ header ::placeholder {
         padding-top: -7px;
         border: none;
     }
-    .search_but .fas{
+    .search_but .fas {
         color: white;
         font-size: 15px;
     }
 }
 
-  /*  .new_search_box {
-        text-align: center;
-        position: relative;
-
-    }
-
-    .search_input:hover {
-        width: 200px;
-    }
-
-    .new_search_box:before {
-        content: '';
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        border: 4px solid rgb(0, 110, 255);
-        right: -4px;
-        top: -5px;
-        position: absolute;
-        animation: grow 1s infinite;
-
-    }
-
-    @keyframes grow {
-        from {
-            transform: scale(1);
-        }
-
-        to {
-            transform: scale(1.5);
-            opacity: 0;
-
-        }
-    }
-
-
-
-    .search_but {
-        width: 18px;
-        height: 17px;
-        margin: 12px 0px 0 -31px;
-        padding: 0;
-        position: absolute;
-        cursor: pointer;
-        background: white;
-
-    }
-
-
-
-    .search_input {
-        width: 40px;
-        height: 40px;
-        padding: 10px;
-        border-radius: 50px;
-        border: none;
-        margin-top: 0;
-        background: rgb(0, 110, 255);
-        cursor: pointer;
-        transition: width 2s;
-
-    }
-
-    .search_input:focus {
-        outline: none;
-    }
-
-
-
-*/
 @media only screen and (min-width: 600px) {
-
-
-    .header_post, .profile , .header_login, .header_register , .header_logout , .close_nav{
+    .header_post, .profile, .header_login, .header_register, .header_logout, .close_nav {
         width: 64px;
-        
     }
-
     .card_holder {
         margin-bottom: 4%;
         width: 90%;
         margin: auto;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-
         grid-gap: 15px;
-
     }
-    .header_contents {
-        width: 51% !important ;
-        display: flex !important;
-        margin-right: 0px;
-        justify-content: space-evenly;
-        
-     
-    
-    }
-    .search_form {
-        width: 60%;
-        margin-left: 26px;
-    }
-
-}
-
-@media only screen and (min-width: 1200px) {
-
-    
-    .header_post, .profile , .header_login, .header_register , .header_logout , .close_nav{
-        width: 20%;
-        
-    }
-
     .header_contents {
         width: 51% !important;
         display: flex !important;
         margin-right: 0px;
         justify-content: space-evenly;
-     
-    
+    }
+    .search_form {
+        width: 60%;
+        margin-left: 26px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .header_post, .profile, .header_login, .header_register, .header_logout, .close_nav {
+        width: 20%;
+    }
+    .header_contents {
+        width: 51% !important;
+        display: flex !important;
+        margin-right: 0px;
+        justify-content: space-evenly;
     }
     .card_holder {
         margin-bottom: 4%;
@@ -788,23 +649,13 @@ header ::placeholder {
         margin: auto;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-
         grid-gap: 15px;
-
     }
-
 }
 
-
-.dropbtn .fas{
-
+.dropbtn .fas {
     color: gray !important;
 }
-
-
-
-
-
 
 .dropbtn {
     background: white;
@@ -816,48 +667,45 @@ header ::placeholder {
     border: none;
     cursor: pointer;
 }
-  .dropdown {
 
+.dropdown {
     display: inline-block;
     width: 50px;
-  }
-  
-  .dropdown-content {
-     display: none;
-   
+}
+
+.dropdown-content {
+    display: none;
     /*position: absolute; */
     right: 0;
     background-color: #f9f9f9;
     min-width: 70px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     opacity: 0.7;
-  }
-  .card_time{
-      padding-left: 23px;
-    
-      position: absolute;
-      top: 0;
-      right: 15px; 
-  }
-  
-  .dropdown-content button {
+}
+
+.card_time {
+    padding-left: 23px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+}
+
+.dropdown-content button {
     color: black;
     padding: 6px 3px;
     background: white;
     text-decoration: none;
     display: block;
     border: none;
-  }
-  
-  .dropdown-content button:hover {background-color: #f1f1f1;}
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown:hover .dropbtn {
-  
-  }
-
 }
+
+.dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+

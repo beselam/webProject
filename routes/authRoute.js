@@ -4,8 +4,9 @@ const router = express.Router();
 const {body, sanitizeBody} = require('express-validator');
 const {validationResult} = require('express-validator');
 const userController = require('../controllers/userController');
-const passport = require('passport');
 
+
+// const the token 
 const checkToken = (req, res, next) => {
     const header = req.headers['authorization'];
   
@@ -25,7 +26,7 @@ router.post('/login',userController.login);
 router.get('/logout',userController.logout);
 router.get('/getUser',checkToken,userController.getUser);
 
-
+ // make the validation before the registration 
 router.post('/register',
     [
          body('matchPasswd', 'Passwords do not match').custom((value, { req }) => (value === req.body.passwd)),

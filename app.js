@@ -14,15 +14,15 @@ app.use(express.urlencoded({extended: true})); // for parsing application/x-www-
 app.use(passport.initialize());
 
 
-const authRouter = require('./routes/authRoute');
-const postRouter = require('./routes/postRoute');
+const authRouter = require('./routes/authRoute');  // route for user authentication 
+const postRouter = require('./routes/postRoute');  // route for  
 
 app.use(express.static('uploads'));
 app.use(express.static('public'));
 
-app.use('/post/makePost',passport.authenticate('jwt', {session: false}), postRouter);
-app.use('/post',postRouter);
-app.use('/auth',authRouter);
+app.use('/post/makePost',passport.authenticate('jwt', {session: false}), postRouter); // protected route for posting 
+app.use('/post',postRouter); // route for  posting 
+app.use('/auth',authRouter);  
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

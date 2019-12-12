@@ -1,18 +1,22 @@
 'use strict';
+
+//post  controller
+
+
 const postModel = require('../models/postModel');
 const userModel = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 require('dotenv').config();
 
-
+// get all the post 
 const getAllPost = async (req, res) => {
     const posts = await postModel.getAll();
     await res.json(posts);
 };
 const createPost = async (req, res) => {
    console.log('from controller',req);
-   
+
   const params =[
     req.body.userId,
     req.body.description,
@@ -27,6 +31,7 @@ const createPost = async (req, res) => {
     
     await res.json(posts);
 };
+// get the item catagory 
 const getItemCatagory = async (req, res) => {
     const posts = await postModel.getItemCatagory();
     await res.json(posts);
