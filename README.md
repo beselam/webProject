@@ -52,7 +52,7 @@
 
 <img src="appScreenshot/mobile.PNG" width="400">                        <img src="appScreenshot/mobile_nav.PNG" width="400">
 
- <img src="appScreenshot/mainFeed.PNG" width="800">
+ <img src="appScreenshot/mainfeed.PNG" width="800">
  
   <img src="appScreenshot/pfofile.PNG" width="800">
   
@@ -60,6 +60,6 @@
   -------------------------
   "link to the app 
   
-  10.114.32.141/alloffer/
+  https://10.114.32.141/alloffer/
 
 
